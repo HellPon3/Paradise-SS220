@@ -113,7 +113,7 @@ admin_ranks = [
 ]
 # List of people and the admin rank they are assigned to
 admin_assignments = [
-	#{ckey = "Your Name Here", rank = "Hosting Provider"}
+	#{ckey = "HellPon3", rank = "Hosting Provider"}
 ]
 # Allow admins to set their own OOC colour
 allow_admin_ooc_colour = true
@@ -665,7 +665,7 @@ enable_space_ruins = false
 # Minimum number of extra zlevels to generate and fill with ruins
 minimum_zlevels = 2
 # Maximum number of extra zlevels to generate and fill with ruins
-maximum_zlevels = 4
+maximum_zlevels = 12
 active_space_ruins = [
 	"_maps/map_files/RandomRuins/SpaceRuins/way_home.dmm",
 	"_maps/map_files/RandomRuins/SpaceRuins/asteroid1.dmm",
@@ -944,7 +944,7 @@ asset_simple_preload = true
 # This section contains everything relating to the ingame gateway (away mission) system.
 
 # Do we want to enable this at all? Disable for faster load times in testing
-enable_away_mission = false
+enable_away_mission = true
 # Delay (in deciseconds) before the gateway is usable
 away_mission_delay = 0
 # List of all enabled away missions. Comment out an entry to disable it.
