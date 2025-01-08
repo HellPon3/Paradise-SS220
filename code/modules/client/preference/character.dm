@@ -1539,6 +1539,17 @@
 						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel-norm"), ICON_OVERLAY)
 					if(4)
 						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
+			if(JOB_INSTRUCTOR)
+				clothes_s = new /icon('icons/mob/clothing/under/procedure.dmi', "trainer_s")
+				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
+				clothes_s.Blend(new /icon('icons/mob/clothing/suit.dmi', "trainercoat"), ICON_OVERLAY)
+				switch(backbag)
+					if(2)
+						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "securitypack"), ICON_OVERLAY)
+					if(3)
+						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel-norm"), ICON_OVERLAY)
+					if(4)
+						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
 	if(disabilities & DISABILITY_FLAG_NEARSIGHTED)
 		preview_icon.Blend(new /icon('icons/mob/clothing/eyes.dmi', "glasses"), ICON_OVERLAY)
@@ -2048,6 +2059,10 @@
 
 			if(job.hidden_from_job_prefs)
 				continue
+			
+			if(job.mentor_only)
+				if(!check_rights(R_MENTOR | R_ADMIN, FALSE, user))
+					continue
 
 			// ===== SS220 ADD - NEW JOBS ======
 			// ============= START =============
@@ -2080,10 +2095,16 @@
 			if(jobban_isbanned(user, job.title))
 				html += "<del class='dark'>[rank]</del></td><td class='bad'><b> \[BANNED]</b></td></tr>"
 				continue
+
 			var/restrictions = job.get_exp_restrictions(user.client)
 			if(restrictions)
 				html += "<del class='dark'>[rank]</del></td><td class='bad'><b> \[[restrictions]]</b></td></tr>"
 				continue
+			// SS220 EDIT START - RACE/JOB BANS
+			if(job.species_ban(user.client))
+				html += "<del class='dark'>[rank]</del></td><td class='bad'><b> \[SPECIES BLOCK\]</b></td></tr>"
+				continue
+			// SS220 EDIT END - RACE/JOB BANS
 			if(job.barred_by_disability(user.client))
 				html += "<del class='dark'>[rank]</del></td><td class='bad'><b> \[DISABILITY\]</b></td></tr>"
 				continue
