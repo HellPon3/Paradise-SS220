@@ -234,7 +234,7 @@
 
 	else if(check_mob())
 		to_chat(copymob, "<span class='notice'>You feel a slight pressure on your ass.</span>")
-		atom_say("Attention: Unable to remove large object!")
+		atom_say("Внимание: Невозможно удалить крупный объект!")
 
 /obj/machinery/photocopier/proc/remove_folder()
 	if(copying)
@@ -349,7 +349,7 @@
 	LAZYADD(saved_documents, O)
 	copying = FALSE
 	playsound(loc, 'sound/machines/ping.ogg', 50, FALSE)
-	atom_say("Document successfully scanned!")
+	atom_say("Документ удачно отсканирован!")
 
 /obj/machinery/photocopier/proc/delete_file(uid)
 	var/document = locateUID(uid)
@@ -474,35 +474,41 @@
 	use_power(active_power_consumption)
 	COOLDOWN_START(src, copying_cooldown, PHOTOCOPIER_DELAY)
 
-/obj/machinery/photocopier/attackby__legacy__attackchain(obj/item/O, mob/user, params)
-	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo) || istype(O, /obj/item/paper_bundle))
+/obj/machinery/photocopier/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/paper) || istype(used, /obj/item/photo) || istype(used, /obj/item/paper_bundle))
 		if(!copyitem)
 			user.drop_item()
-			copyitem = O
-			O.forceMove(src)
-			to_chat(user, "<span class='notice'>You insert \the [O] into \the [src].</span>")
+			copyitem = used
+			used.forceMove(src)
+			to_chat(user, "<span class='notice'>You insert \the [used] into \the [src].</span>")
 			flick(insert_anim, src)
 		else
 			to_chat(user, "<span class='notice'>There is already something in \the [src].</span>")
-	else if(istype(O, /obj/item/toner))
+
+		return ITEM_INTERACT_COMPLETE
+	else if(istype(used, /obj/item/toner))
 		if(toner <= 10) //allow replacing when low toner is affecting the print darkness
 			user.drop_item()
 			to_chat(user, "<span class='notice'>You insert the toner cartridge into \the [src].</span>")
-			var/obj/item/toner/T = O
+			var/obj/item/toner/T = used
 			toner += T.toner_amount
-			qdel(O)
+			qdel(used)
 		else
 			to_chat(user, "<span class='notice'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>")
-	else if(istype(O, /obj/item/folder))
+
+		return ITEM_INTERACT_COMPLETE
+	else if(istype(used, /obj/item/folder))
 		if(!folder) //allow replacing when low toner is affecting the print darkness
 			user.drop_item()
-			to_chat(user, "<span class='notice'>You slide the [O] into \the [src].</span>")
-			folder = O
-			O.forceMove(src)
+			to_chat(user, "<span class='notice'>You slide the [used] into \the [src].</span>")
+			folder = used
+			used.forceMove(src)
 		else
 			to_chat(user, "<span class='notice'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>")
-	else if(istype(O, /obj/item/grab)) //For ass-copying.
-		var/obj/item/grab/G = O
+
+		return ITEM_INTERACT_COMPLETE
+	else if(istype(used, /obj/item/grab)) //For ass-copying.
+		var/obj/item/grab/G = used
 		if(ismob(G.affecting) && G.affecting != copymob)
 			var/mob/GM = G.affecting
 			visible_message("<span class='warning'>[usr] drags [GM.name] onto the photocopier!</span>")
@@ -511,6 +517,8 @@
 			if(copyitem)
 				copyitem.forceMove(get_turf(src))
 				copyitem = null
+
+		return ITEM_INTERACT_COMPLETE
 	else
 		return ..()
 
@@ -543,7 +551,7 @@
 		visible_message("<span class='notice'>[copyitem] is shoved out of the way by [copymob]!</span>")
 		copyitem = null
 	playsound(loc, 'sound/machines/ping.ogg', 50, FALSE)
-	atom_say("Attention: Posterior Placed on Printing Plaque!")
+	atom_say("Внимание: Обнаружена задница на печатном полотне!")
 	SStgui.update_uis(src)
 	return TRUE
 

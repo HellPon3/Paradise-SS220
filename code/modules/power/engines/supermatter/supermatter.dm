@@ -122,15 +122,15 @@
 	///The damage we had before this cycle. Used to limit the damage we can take each cycle, and for safe_alert
 	var/damage_archived = 0
 	///Our "Shit is no longer fucked" message. We send it when damage is less then damage_archived
-	var/safe_alert = "Crystalline hyperstructure returning to safe operating parameters."
+	var/safe_alert = "Возвращение кристаллической гиперструктуры к безопасным рабочим параметрам."
 	///The point at which we should start sending messeges about the damage to the engi channels.
 	var/warning_point = 50
 	///The alert we send when we've reached warning_point
-	var/warning_alert = "Danger! Crystal hyperstructure integrity faltering!"
+	var/warning_alert = "Опасность! Нарушение целостности гиперструктуры кристалла!"
 	///The point at which we start sending messages to the common channel
 	var/emergency_point = 700
 	///The alert we send when we've reached emergency_point
-	var/emergency_alert = "CRYSTAL DELAMINATION IMMINENT."
+	var/emergency_alert = "РАССЛОЕНИЕ КРИСТАЛЛА НЕИЗБЕЖНО."
 	///The point at which we delam
 	var/explosion_point = 900
 	///When we pass this amount of damage we start shooting bolts
@@ -338,7 +338,7 @@
 	var/image/causality_field = image(icon, null, "causality_field")
 	add_overlay(causality_field)
 
-	var/speaking = "<span class='reallybig'>[emergency_alert] The supermatter has reached critical integrity failure. Emergency causality destabilization field has been activated.</span>"
+	var/speaking = "<span class='reallybig'>[emergency_alert] Суперматерия достигла критического нарушения целостности. Активировано аварийное дестабилизационное поле.</span>"
 	for(var/mob/M in GLOB.player_list) // for all players
 		var/turf/T = get_turf(M)
 		if(istype(T) && atoms_share_level(T, src)) // if the player is on the same zlevel as the SM shared
@@ -351,7 +351,7 @@
 			damage = explosion_point - 1 // One point below exploding, so it will re-start the countdown once unfrozen
 			return
 		if(damage < explosion_point) // Cutting it a bit close there engineers
-			radio.autosay("<span class='big'>[safe_alert] Failsafe has been disengaged.</span>", name, null)
+			radio.autosay("<span class='big'>[safe_alert] Система отказоустойчивости деактивирована.</span>", name, null)
 			cut_overlay(causality_field, TRUE)
 			final_countdown = FALSE
 			remove_filter(list("outline", "icon"))
@@ -360,7 +360,7 @@
 			sleep(10)
 			continue
 		else if(i > 50)
-			speaking = "<b>[DisplayTimeText(i, TRUE)] remain before causality stabilization.</b>"
+			speaking = "<b>До взрыва кристалла суперматерии осталось [DisplayTimeText(i, TRUE)].</b>"
 		else
 			speaking = "<span class='reallybig'>[i * 0.1]...</span>"
 		radio.autosay(speaking, name, null)
@@ -474,7 +474,7 @@
 		// Pass all the gas related code an empty gas container
 		removed = new()
 	damage_archived = damage
-	if(!removed || !removed.total_moles() || isspaceturf(T)) //we're in space or there is no gas to process
+	if(!removed || removed.total_moles() <= 0 || isspaceturf(T)) //we're in space or there is no gas to process
 		if(takes_damage)
 			damage += max((power / 1000) * DAMAGE_INCREASE_MULTIPLIER, 0.1) // always does at least some damage
 	else
@@ -570,24 +570,24 @@
 
 		var/crush_ratio = combined_gas / MOLE_CRUNCH_THRESHOLD
 
-		gas_coefficient = 1 + (crush_ratio ** 2 * (crush_ratio <= 1) + (crush_ratio > 1) * crush_ratio ** 0.5) * (plasmacomp * PLASMA_CRUNCH + o2comp * O2_CRUNCH + co2comp * CO2_CRUNCH + n2comp * N2_CRUNCH + n2ocomp * N2O_CRUNCH)
+		gas_coefficient = 1 + (crush_ratio ** 2 * (crush_ratio <= 1) + (crush_ratio > 1) * 2 * crush_ratio / (crush_ratio + 1)) * (plasmacomp * PLASMA_CRUNCH + o2comp * O2_CRUNCH + co2comp * CO2_CRUNCH + n2comp * N2_CRUNCH + n2ocomp * N2O_CRUNCH)
 		if(prob(50))
 			radiation_pulse(src, power * (gas_coefficient + max(0, ((power_transmission_bonus / 10)))))
 
 		//Power * 0.55 * a value between 1 and 0.8
 		var/device_energy = power * REACTION_POWER_MODIFIER
 
-		// Calculate temperature change in terms of thermal energy, scaled by the average specific heat of the gas.
-		if(removed.total_moles())
-			var/produced_joules = max(0, ((device_energy * dynamic_heat_modifier) / THERMAL_RELEASE_MODIFIER) * heat_multiplier)
-			produced_joules *= (removed.heat_capacity() / removed.total_moles())
-			removed.set_temperature((removed.thermal_energy() + produced_joules) / removed.heat_capacity())
-
 		//Calculate how much gas to release
 		//Varies based on power and gas content
 		removed.set_toxins(removed.toxins() + max(((device_energy * dynamic_heat_modifier) / PLASMA_RELEASE_MODIFIER) * gas_multiplier, 0))
 		//Varies based on power, gas content, and heat
 		removed.set_oxygen(removed.oxygen() + max((((device_energy + removed.temperature() * dynamic_heat_modifier) - T0C) / OXYGEN_RELEASE_MODIFIER) * gas_multiplier, 0))
+
+		// Calculate temperature change in terms of thermal energy, scaled by the average specific heat of the gas.
+		if(removed.total_moles() >= 1)
+			var/produced_joules = max(0, ((device_energy * dynamic_heat_modifier) / THERMAL_RELEASE_MODIFIER) * heat_multiplier)
+			produced_joules *= (removed.heat_capacity() / removed.total_moles())
+			removed.set_temperature((removed.thermal_energy() + produced_joules) / removed.heat_capacity())
 
 		if(produces_gas)
 			env.merge(removed)
@@ -665,27 +665,27 @@
 
 			//Oh shit it's bad, time to freak out
 			if(damage > emergency_point)
-				radio.autosay("<span class='big'>[emergency_alert] Integrity: [get_integrity()]%</span>", name, null)
+				radio.autosay("<span class='big'>[emergency_alert] Целостность: [get_integrity()]%</span>", name, null)
 				lastwarning = REALTIMEOFDAY
 				if(!has_reached_emergency)
 					investigate_log("has reached the emergency point for the first time.", "supermatter")
 					message_admins("[src] has reached the emergency point [ADMIN_JMP(src)].")
 					has_reached_emergency = TRUE
 			else if(damage >= damage_archived) // The damage is still going up
-				radio.autosay("<b>[warning_alert] Integrity: [get_integrity()]%</b>", name, "Engineering")
+				radio.autosay("<b>[warning_alert] Целостность: [get_integrity()]%</b>", name, "Engineering")
 				lastwarning = REALTIMEOFDAY - (WARNING_DELAY * 5)
 
 			else                                                 // Phew, we're safe
-				radio.autosay("<b>[safe_alert] Integrity: [get_integrity()]%</b>", name, "Engineering")
+				radio.autosay("<b>[safe_alert] Целостность: [get_integrity()]%</b>", name, "Engineering")
 				lastwarning = REALTIMEOFDAY
 
 			if(power > POWER_PENALTY_THRESHOLD)
-				radio.autosay("<b>Warning: Hyperstructure has reached dangerous power level.</b>", name, "Engineering")
+				radio.autosay("<b>Гиперструктура достигла опасного уровня мощности.</b>", name, "Engineering")
 				if(powerloss_inhibitor < 0.5)
-					radio.autosay("<b>DANGER: CHARGE INERTIA CHAIN REACTION IN PROGRESS.</b>", name, "Engineering")
+					radio.autosay("<b>ОПАСНОСТЬ: ИДЕТ ИНЕРЦИОННАЯ ЦЕПНАЯ РЕАКЦИЯ ЗАРЯДА.</b>", name, "Engineering")
 
 			if(combined_gas > MOLE_CRUNCH_THRESHOLD)
-				radio.autosay("<b>Warning: Critical coolant mass reached.</b>", name, "Engineering")
+				radio.autosay("<b>Предупреждение: Достигнута критическая масса теплоносителя.</b>", name, "Engineering")
 		//Boom (Mind blown)
 		if(damage > explosion_point)
 			countdown()
@@ -787,22 +787,22 @@
 	playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, TRUE)
 	Consume(nom)
 
-/obj/machinery/atmospherics/supermatter_crystal/attackby__legacy__attackchain(obj/item/I, mob/living/user, params)
-	if(!istype(I) || (I.flags & ABSTRACT) || !istype(user))
-		return
-	if(moveable && default_unfasten_wrench(user, I, time = 20))
-		return
+/obj/machinery/atmospherics/supermatter_crystal/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(!istype(used) || (used.flags & ABSTRACT) || !istype(user))
+		return ITEM_INTERACT_COMPLETE
+	if(moveable && default_unfasten_wrench(user, used, time = 20))
+		return ITEM_INTERACT_COMPLETE
 
-	if(istype(I, /obj/item/scalpel/supermatter))
+	if(istype(used, /obj/item/scalpel/supermatter))
 		if(!ishuman(user))
-			return
+			return ITEM_INTERACT_COMPLETE
 
 		var/mob/living/carbon/human/H = user
-		var/obj/item/scalpel/supermatter/scalpel = I
+		var/obj/item/scalpel/supermatter/scalpel = used
 
 		if(!scalpel.uses_left)
 			to_chat(H, "<span class='warning'>[scalpel] isn't sharp enough to carve a sliver off of [src]!</span>")
-			return
+			return ITEM_INTERACT_COMPLETE
 
 		var/obj/item/nuke_core/supermatter_sliver/sliver = carve_sliver(H)
 		if(sliver)
@@ -819,20 +819,20 @@
 				tongs.item_state = "supermatter_tongs_loaded"
 				to_chat(H, "<span class='notice'>You pick up [sliver] with [tongs]!</span>")
 
-		return
+		return ITEM_INTERACT_COMPLETE
 
-	if(istype(I, /obj/item/supermatter_halberd))
+	if(istype(used, /obj/item/supermatter_halberd))
 		carve_sliver(user)
-		return
+		return ITEM_INTERACT_COMPLETE
 
-	if(istype(I, /obj/item/retractor/supermatter))
-		to_chat(user, "<span class='notice'>[I] bounces off [src], you need to cut a sliver off first!</span>")
+	if(istype(used, /obj/item/retractor/supermatter))
+		to_chat(user, "<span class='notice'>[used] bounces off [src], you need to cut a sliver off first!</span>")
 	else if(user.drop_item())
-		user.visible_message("<span class='danger'>As [user] touches [src] with \a [I], silence fills the room...</span>",\
-			"<span class='userdanger'>You touch [src] with [I], and everything suddenly goes silent.</span>\n<span class='notice'>[I] flashes into dust as you flinch away from [src].</span>",\
+		user.visible_message("<span class='danger'>As [user] touches [src] with \a [used], silence fills the room...</span>",\
+			"<span class='userdanger'>You touch [src] with [used], and everything suddenly goes silent.</span>\n<span class='notice'>[used] flashes into dust as you flinch away from [src].</span>",\
 			"<span class='italics'>Everything suddenly goes silent.</span>")
-		investigate_log("has been attacked ([I]) by [key_name(user)]", "supermatter")
-		Consume(I)
+		investigate_log("has been attacked ([used]) by [key_name(user)]", "supermatter")
+		Consume(used)
 		playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, TRUE)
 
 		radiation_pulse(src, 150, 4)

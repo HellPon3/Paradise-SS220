@@ -316,6 +316,8 @@ GLOBAL_LIST_EMPTY(holopads)
 		return
 	if(istype(robot))
 		interact(robot)
+	if(ismecha(ai.loc)) // AIs must exit mechs before activating holopads.
+		return
 	/*There are pretty much only three ways to interact here.
 	I don't need to check for client since they're clicking on an object.
 	This may change in the future but for now will suffice.*/
@@ -341,7 +343,7 @@ GLOBAL_LIST_EMPTY(holopads)
 		var/datum/holocall/HC = I
 		//Sanity check and skip if no longer valid call
 		if(!HC.Check())
-			atom_say("Call was terminated at remote terminal.")
+			atom_say("Вызов был прерван удаленно.")
 			continue
 
 		if(HC.connected_holopad != src)

@@ -4,7 +4,7 @@
 #define MAX_TAB_INDEX 1
 
 /datum/ui_module/crew_monitor
-	name = "Crew monitor"
+	name = "Монитор экипажа"
 	var/is_advanced = FALSE
 	var/viewing_current_z_level
 	/// If true, we'll see everyone, regardless of their suit sensors.
@@ -123,6 +123,12 @@
 		data["possible_levels"] |= zl
 
 	return data
+
+/datum/ui_module/crew_monitor/mod
+	name = "Crew monitor (Modsuit)"
+
+/datum/ui_module/crew_monitor/mod/ui_state(mob/user)
+	return GLOB.deep_inventory_state
 
 /datum/ui_module/crew_monitor/ghost
 	name = "Crew monitor (Observer)"

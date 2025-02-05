@@ -152,7 +152,8 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	else
 		to_chat(user, "There is nothing to remove from the console.")
 
-/obj/machinery/computer/card/attackby__legacy__attackchain(obj/item/card/id/id_card, mob/user, params)
+/obj/machinery/computer/card/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	var/obj/item/card/id/id_card = used
 	if(!istype(id_card))
 		return ..()
 	if(istype(id_card, /obj/item/card/id/nct_data_chip))
@@ -171,6 +172,8 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 	SStgui.update_uis(src)
 	attack_hand(user)
+
+	return ITEM_INTERACT_COMPLETE
 
 //Check if you can't touch a job in any way whatsoever
 /obj/machinery/computer/card/proc/job_blacklisted_full(datum/job/job)
@@ -660,7 +663,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 						if(R.fields["id"] == E.fields["id"])
 							if(status_valid_for_demotion(R.fields["criminal"]))
 								set_criminal_status(usr, R, SEC_RECORD_STATUS_DEMOTE, reason, scan.assignment)
-								Radio.autosay("[scan.registered_name] ([scan.assignment]) has set [tempname] ([temprank]) to demote for: [reason]", name, "Command")
+								Radio.autosay("[scan.registered_name] ([scan.assignment]) назначил [tempname] ([temprank]) на понижение за: [reason]", name, "Command")
 								message_admins("[key_name_admin(usr)] ([scan.assignment]) has set [tempname] ([temprank]) to demote for: \"[reason]\"")
 								log_game("[key_name(usr)] ([scan.assignment]) has set \"[tempname]\" ([temprank]) to demote for: \"[reason]\".")
 								SSjobs.notify_by_name(tempname, "[scan.registered_name] ([scan.assignment]) has ordered your demotion. Report to their office, or the HOP. Reason given: \"[reason]\"")
