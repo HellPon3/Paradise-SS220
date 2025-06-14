@@ -43,10 +43,107 @@
 	total_reagents = 60
 	maximum_reagents = 60
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/borghypo/crisis
 	reagent_ids = list("salglu_solution", "epinephrine", "sal_acid")
 	total_reagents = 60
 	maximum_reagents = 60
+=======
+/obj/item/reagent_containers/borghypo/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	cyborg = null
+	return ..()
+
+/obj/item/reagent_containers/borghypo/process()
+	if(!should_refill()) // no need to refill
+		STOP_PROCESSING(SSobj, src)
+		return
+	if(!refill_delay) // no delay, refill it now
+		refill_hypo(cyborg)
+		return
+	if(charge_tick < refill_delay) // not ready to refill
+		charge_tick++
+	else // ready to refill
+		refill_hypo(cyborg)
+
+// Use this to add more chemicals for the borghypo to produce.
+/obj/item/reagent_containers/borghypo/proc/refill_hypo(mob/living/silicon/robot/user, quick = FALSE)
+	if(quick) // gives us a hypo full of reagents no matter what
+		for(var/reagent as anything in reagent_ids)
+			if(reagent_ids[reagent] < volume)
+				reagent_ids[reagent] = volume
+		return
+	if(istype(user) && user.cell && user.cell.use(charge_cost)) // we are a robot, we have a cell and enough charge? let's refill now
+		if(charge_tick)
+			charge_tick = 0
+		for(var/reagent as anything in reagent_ids)
+			if(reagent_ids[reagent] < volume)
+				var/reagents_to_add = min(volume - reagent_ids[reagent], BORGHYPO_REFILL_VALUE)
+				reagent_ids[reagent] = (reagent_ids[reagent] || 0) + reagents_to_add // in case if it's null somehow, set it to 0
+
+// whether our hypo's reagents are at max volume or not
+/obj/item/reagent_containers/borghypo/proc/should_refill()
+	for(var/reagent as anything in reagent_ids)
+		if(reagent_ids[reagent] < volume)
+			return TRUE
+	return FALSE
+
+/obj/item/reagent_containers/borghypo/mob_act(mob/target, mob/living/user)
+	if(!ishuman(target))
+		return
+	if(!reagent_ids[reagent_selected])
+		to_chat(user, "<span class='warning'>The injector is empty.</span>")
+		return
+	var/mob/living/carbon/human/mob = target
+	if(mob.can_inject(user, TRUE, user.zone_selected, penetrate_thick))
+		to_chat(user, "<span class='notice'>You inject [mob] with [src].</span>")
+		to_chat(mob, "<span class='notice'>You feel a tiny prick!</span>")
+		var/reagents_to_transfer = min(amount_per_transfer_from_this, reagent_ids[reagent_selected])
+		mob.reagents.add_reagent(reagent_selected, reagents_to_transfer)
+		reagent_ids[reagent_selected] -= reagents_to_transfer
+		START_PROCESSING(SSobj, src) // start processing so we can refill hypo
+		if(play_sound)
+			playsound(loc, 'sound/goonstation/items/hypo.ogg', 80, FALSE)
+		if(mob.reagents)
+			var/datum/reagent/injected = GLOB.chemical_reagents_list[reagent_selected]
+			var/contained = injected.name
+			add_attack_logs(user, mob, "Injected with [name] containing [contained], transfered [reagents_to_transfer] units", injected.harmless ? ATKLOG_ALMOSTALL : null)
+			to_chat(user, "<span class='notice'>[reagents_to_transfer] units injected. [reagent_ids[reagent_selected]] units remaining.</span>")
+
+/obj/item/reagent_containers/borghypo/proc/get_radial_contents()
+	return reagent_icons & reagent_ids
+
+/obj/item/reagent_containers/borghypo/activate_self(mob/user)
+	if(..())
+		return
+
+	playsound(loc, 'sound/effects/pop.ogg', 50, 0)
+	var/selected_reagent = show_radial_menu(user, src, get_radial_contents(), radius = 48)
+	if(!selected_reagent)
+		return
+	var/datum/reagent/R = GLOB.chemical_reagents_list[selected_reagent]
+	to_chat(user, "<span class='notice'>Synthesizer is now dispensing [R.name].</span>")
+	reagent_selected = selected_reagent
+
+/obj/item/reagent_containers/borghypo/examine(mob/user)
+	. = ..()
+	var/datum/reagent/get_reagent_name = GLOB.chemical_reagents_list[reagent_selected]
+	. |= "<span class='notice'>Contains [reagent_ids[reagent_selected]] units of [get_reagent_name.name].</span>"
+
+/obj/item/reagent_containers/borghypo/emag_act(mob/user)
+	if(!emagged)
+		emagged = TRUE
+		penetrate_thick = TRUE
+		play_sound = FALSE
+		reagent_ids += reagent_ids_emagged
+		refill_hypo(quick = TRUE)
+		return
+	emagged = FALSE
+	penetrate_thick = FALSE
+	play_sound = initial(play_sound)
+	reagent_ids -= reagent_ids_emagged
+	refill_hypo(quick = TRUE)
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 
 /obj/item/reagent_containers/borghypo/syndicate
 	name = "syndicate cyborg hypospray"

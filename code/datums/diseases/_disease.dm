@@ -178,6 +178,11 @@ GLOBAL_LIST_INIT(diseases, subtypesof(/datum/disease))
 
 /datum/disease/proc/Copy()
 	var/datum/disease/D = new type()
+<<<<<<< HEAD
+=======
+	D.spread_flags = spread_flags //In case an admin (or other factor) has made a virus non spreading, you should *not* get a new spreading virus from blood
+	D.visibility_flags = visibility_flags // See above.
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 	D.strain_data = strain_data.Copy()
 	return D
 

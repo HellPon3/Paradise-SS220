@@ -2066,6 +2066,12 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate_sit)
+"hR" = (
+/obj/machinery/economy/vending/dinnerware,
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/ghost_bar)
 "hS" = (
 /obj/structure/bookcase/random,
 /turf/simulated/floor/plasteel{
@@ -4622,6 +4628,12 @@
 	icon_state = "red"
 	},
 /area/holodeck/source_thunderdomecourt)
+"qk" = (
+/obj/machinery/cooking/deepfryer/upgraded,
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/ghost_bar)
 "ql" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/drinks/mug/med,
@@ -5368,6 +5380,22 @@
 /obj/effect/spawner/window/plastitanium,
 /turf/simulated/floor/plating,
 /area/shuttle/syndicate)
+"sH" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/condiment/saltshaker{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/condiment/peppermill{
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/condiment/enzyme{
+	pixel_y = 5
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/ghost_bar)
 "sK" = (
 /turf/simulated/floor/plasteel/stairs/left,
 /area/syndicate_mothership)
@@ -6478,23 +6506,7 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ghost_bar)
 "wN" = (
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/condiment/saltshaker{
-	pixel_x = -8;
-	pixel_y = 5
-	},
-/obj/item/reagent_containers/condiment/peppermill{
-	pixel_x = -8
-	},
-/obj/item/kitchen/knife,
-/obj/item/reagent_containers/condiment/enzyme{
-	pixel_y = 5
-	},
-/obj/machinery/reagentgrinder{
-	desc = "Used to grind things up into raw materials and liquids.";
-	pixel_y = 5
-	},
-/obj/item/reagent_containers/glass/beaker/large,
+/obj/structure/closet/crate/cookware,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -7098,7 +7110,9 @@
 /area/centcom/specops)
 "zP" = (
 /obj/machinery/light/small,
-/obj/machinery/economy/vending/dinnerware,
+/obj/machinery/smartfridge/foodcart{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -7126,9 +7140,8 @@
 /turf/simulated/floor/wood,
 /area/syndicate_mothership)
 "zY" = (
-/obj/machinery/smartfridge/foodcart{
-	dir = 4
-	},
+/obj/structure/table/reinforced,
+/obj/machinery/cooking/stovetop,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -7483,6 +7496,12 @@
 /obj/machinery/economy/vending/tool/free,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/specops)
+"Bn" = (
+/obj/machinery/icemachine,
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/ghost_bar)
 "Bo" = (
 /obj/structure/table/wood,
 /obj/item/storage/box/drinkingglasses,
@@ -7969,7 +7988,14 @@
 	},
 /area/tdome/tdomeadmin)
 "Dk" = (
+<<<<<<< HEAD
 /obj/machinery/kitchen_machine/oven/upgraded,
+=======
+/obj/structure/table/reinforced,
+/obj/item/storage/bag/tray,
+/obj/item/kitchen/rollingpin,
+/obj/item/kitchen/knife,
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -8476,6 +8502,11 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/machinery/reagentgrinder{
+	desc = "Used to grind things up into raw materials and liquids.";
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/glass/beaker/large,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -9702,6 +9733,12 @@
 "Jn" = (
 /turf/simulated/wall/indestructible/riveted,
 /area/centcom/suppy)
+"Jo" = (
+/obj/machinery/chem_master/condimaster,
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/ghost_bar)
 "Jq" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/shell/beanbag,
@@ -13035,6 +13072,16 @@
 	icon_state = "red"
 	},
 /area/centcom/evac)
+"Vh" = (
+/obj/structure/table/reinforced,
+/obj/machinery/cooking/grill/upgraded,
+/obj/item/stack/sheet/wood{
+	amount = 30
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/ghost_bar)
 "Vi" = (
 /obj/structure/table/wood,
 /obj/item/taperecorder,
@@ -13214,6 +13261,12 @@
 /obj/structure/window/full/shuttle,
 /turf/simulated/floor/grass/no_creep,
 /area/shuttle/escape)
+"VR" = (
+/obj/machinery/processor,
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/ghost_bar)
 "VS" = (
 /obj/machinery/mech_bay_recharge_port/upgraded/unsimulated{
 	dir = 8;
@@ -13236,6 +13289,12 @@
 	icon_state = "brown"
 	},
 /area/shuttle/escape)
+"VW" = (
+/obj/machinery/cooking/ice_cream_mixer/upgraded,
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/ghost_bar)
 "VX" = (
 /obj/item/bikehorn/rubberducky,
 /obj/structure/window/basic{
@@ -13864,7 +13923,12 @@
 /turf/simulated/floor/plating/airless,
 /area/shuttle/specops)
 "XR" = (
+<<<<<<< HEAD
 /obj/machinery/processor,
+=======
+/obj/structure/sign/poster/official/fruit_bowl/directional/north,
+/obj/machinery/cooking/oven/upgraded,
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -74315,10 +74379,10 @@ Sh
 Bc
 mA
 XR
-wN
+es
 Dk
 zY
-xU
+es
 zP
 Me
 Jy
@@ -74571,12 +74635,12 @@ Me
 Me
 Me
 Me
-Me
-Me
-Me
-Me
-Me
-Me
+qk
+es
+Vh
+sH
+es
+Bn
 Me
 Jy
 RX
@@ -74827,13 +74891,13 @@ ps
 ps
 ps
 ps
-ps
-ps
-ps
-ps
-ps
-ps
 Me
+VW
+es
+es
+es
+es
+es
 Me
 gS
 xY
@@ -75083,14 +75147,14 @@ ps
 ps
 ps
 ps
-OK
-OK
-ps
-ps
-ps
-ps
 ps
 Me
+VR
+es
+xU
+Jo
+wN
+hR
 Me
 Me
 Me
@@ -75340,15 +75404,15 @@ ps
 ps
 ps
 OK
-aN
-aN
-OK
 ps
-ps
-ps
-ps
-ps
-ps
+Me
+Me
+Me
+Me
+Me
+Me
+Me
+Me
 ps
 ps
 Me
@@ -75597,13 +75661,13 @@ OK
 ps
 ps
 OK
-aN
-aN
-aN
-aN
+OK
 ps
-OK
-OK
+ps
+ps
+ps
+ps
+ps
 ps
 ps
 ps
@@ -75855,11 +75919,11 @@ OK
 OK
 aN
 aN
-aN
-aN
-aN
-aN
-aN
+OK
+OK
+OK
+OK
+OK
 OK
 OK
 OK

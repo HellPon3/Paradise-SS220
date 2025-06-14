@@ -335,7 +335,7 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/casino/maints)
 "iw" = (
-/obj/structure/chair/office{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/structure/cable{
@@ -857,7 +857,7 @@
 /turf/simulated/floor/mineral/titanium/blue/airless,
 /area/ruin/space/powered/casino/docked_ships)
 "wY" = (
-/obj/structure/chair/office{
+/obj/structure/chair{
 	dir = 1
 	},
 /mob/living/simple_animal/hostile/pirate,

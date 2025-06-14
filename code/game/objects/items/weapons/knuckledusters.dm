@@ -23,16 +23,31 @@
 	if(!gripped)
 		gripped = TRUE
 		to_chat(user, "You tighten your grip on [src], ensuring you won't drop it.")
+<<<<<<< HEAD
 		flags |= (NODROP | ABSTRACT)
 	else
 		gripped = FALSE
 		to_chat(user, "You relax your grip on [src].")
 		flags &= ~(NODROP | ABSTRACT)
+=======
+		set_nodrop(TRUE, user)
+		ADD_TRAIT(src, TRAIT_SKIP_EXAMINE, "knuckledusters")
+	else
+		gripped = FALSE
+		to_chat(user, "You relax your grip on [src].")
+		set_nodrop(FALSE, user)
+		REMOVE_TRAIT(src, TRAIT_SKIP_EXAMINE, "knuckledusters")
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 
 /obj/item/melee/knuckleduster/dropped(mob/user, silent)
 	. = ..()
 	gripped = FALSE
+<<<<<<< HEAD
 	flags &= ~(NODROP | ABSTRACT)
+=======
+	set_nodrop(FALSE, user)
+	REMOVE_TRAIT(src, TRAIT_SKIP_EXAMINE, "knuckledusters")
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 
 /obj/item/melee/knuckleduster/attack__legacy__attackchain(mob/living/target, mob/living/user)
 	. = ..()

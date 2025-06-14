@@ -216,16 +216,169 @@
 	},
 /obj/item/pen/multi/fountain,
 /turf/simulated/floor/wood,
+<<<<<<< HEAD
 /area/ruin/space/powered)
 "xx" = (
 /obj/structure/chair/sofa/left{
+=======
+/area/template_noop)
+"lB" = (
+/obj/machinery/door/airlock/titanium,
+/turf/simulated/floor/mineral/titanium,
+/area/template_noop)
+"lJ" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/simulated/floor/vault,
+/area/template_noop)
+"mo" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/dress/sundress,
+/turf/simulated/floor/plating/burnt,
+/area/template_noop)
+"mJ" = (
+/turf/simulated/floor/carpet/green,
+/area/template_noop)
+"mM" = (
+/obj/effect/decal/cleanable/ash,
+/turf/simulated/floor/plating/burnt,
+/area/template_noop)
+"ny" = (
+/obj/structure/lattice,
+/obj/item/stack/sheet/metal,
+/turf/space,
+/area/template_noop)
+"nz" = (
+/obj/item/shard,
+/turf/space,
+/area/template_noop)
+"nJ" = (
+/obj/structure/mineral_door/iron,
+/turf/simulated/floor/vault,
+/area/template_noop)
+"oF" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge,
+/turf/template_noop,
+/area/template_noop)
+"pp" = (
+/obj/effect/map_effect/marker/mapmanip/submap/extract/space_ruin/rocky_motel,
+/turf/simulated/wall/mineral/plastitanium/nodiagonal,
+/area/template_noop)
+"pJ" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/syndicate/tacticool,
+/turf/simulated/floor/carpet/black,
+/area/template_noop)
+"qm" = (
+/obj/effect/mapping_helpers/turfs/burn,
+/obj/item/flashlight/lamp/green,
+/turf/template_noop,
+/area/template_noop)
+"rx" = (
+/obj/structure/safe/floor,
+/obj/item/stack/spacecash/c200,
+/obj/item/stack/sheet/mineral/gold/fifty,
+/obj/item/clothing/gloves/ring/plasma,
+/obj/item/banhammer,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/burnt,
+/area/template_noop)
+"rK" = (
+/turf/simulated/floor/mineral/plastitanium,
+/area/template_noop)
+"sk" = (
+/obj/item/kirbyplants/large,
+/turf/simulated/floor/carpet/green,
+/area/template_noop)
+"sE" = (
+/obj/effect/decal/cleanable/glass,
+/turf/template_noop,
+/area/template_noop)
+"sR" = (
+/obj/effect/map_effect/marker/mapmanip/submap/extract/space_ruin/rocky_motel,
+/turf/template_noop,
+/area/template_noop)
+"tb" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/sign/poster/contraband/random/directional/west,
+/turf/simulated/floor/mineral/plastitanium,
+/area/template_noop)
+"uS" = (
+/turf/simulated/floor/carpet/royalblack,
+/area/template_noop)
+"uU" = (
+/obj/item/push_broom,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/mop,
+/obj/item/storage/toolbox/syndicate,
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/emergency,
+/obj/structure/shelf{
+	color = "#A91515"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/template_noop)
+"uV" = (
+/obj/effect/mapping_helpers/turfs/burn,
+/obj/effect/decal/cleanable/ash,
+/turf/template_noop,
+/area/template_noop)
+"vj" = (
+/turf/space,
+/area/template_noop)
+"wt" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable{
+	icon_state = "2-8";
+	tag = ""
+	},
+/obj/structure/sign/vacuum/external{
+	pixel_x = 32
+	},
+/obj/machinery/light/small{
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 	dir = 4
 	},
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood,
+<<<<<<< HEAD
 /area/ruin/space/powered)
 "yC" = (
 /obj/structure/girder,
+=======
+/area/template_noop)
+"Ir" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/simulated/floor/vault,
+/area/template_noop)
+"Kr" = (
+/obj/item/soap/syndie,
+/obj/machinery/shower/directional/west,
+/obj/structure/curtain/open/shower,
+/turf/simulated/floor/plasteel{
+	icon_state = "freezerfloor"
+	},
+/area/template_noop)
+"Kx" = (
+/obj/structure/lattice,
+/turf/space,
+/area/template_noop)
+"KT" = (
+/obj/machinery/light_switch/off{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/template_noop)
+"Ll" = (
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 /turf/simulated/floor/plating/burnt,
 /area/ruin/space/powered)
 "zb" = (

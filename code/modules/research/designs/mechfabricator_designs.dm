@@ -1323,7 +1323,123 @@
 	construction_time = 12 SECONDS
 	category = list("Cyborg Upgrade Modules")
 
+<<<<<<< HEAD
 //Misc
+=======
+/datum/design/borg_upgrade_holo_stretcher
+	name = "Cyborg Upgrade (Holo Stretcher Rack Upgrade)"
+	id = "borg_upgrade_holo_stretcher"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/holo_stretcher
+	req_tech = list("magnets" = 5, "powerstorage" = 4)
+	materials = list(MAT_METAL = 1000, MAT_SILVER = 500, MAT_GLASS = 500, MAT_DIAMOND = 200)
+	construction_time = 12 SECONDS
+	category = list("Cyborg Upgrades")
+
+// IPC
+
+/datum/design/ipc_head
+	name = "IPC Head"
+	id = "ipc_head"
+	build_type = MECHFAB
+	build_path = /obj/item/organ/external/head/ipc
+	materials = list(MAT_METAL=15000, MAT_GLASS=5000)
+	construction_time = 35 SECONDS
+	category = list("IPC")
+
+/datum/design/integrated_robotic_chassis
+	name = "Integrated Robotic Chassis"
+	id = "integrated_robotic_chassis"
+	build_type = MECHFAB
+	build_path = /mob/living/carbon/human/machine/created
+	materials = list(MAT_METAL = 40000, MAT_TITANIUM = 7000) //for something made from lego, they sure need a lot of metal
+	construction_time = 40 SECONDS
+	category = list("IPC")
+
+/datum/design/ipc_cell
+	name = "IPC Microbattery"
+	id = "ipc_cell"
+	build_type = MECHFAB
+	build_path = /obj/item/organ/internal/cell
+	materials = list(MAT_METAL=2000, MAT_GLASS=750)
+	construction_time = 20 SECONDS
+	category = list("IPC")
+
+/datum/design/ipc_charger
+	name = "IPC Charger"
+	id = "ipc_cahrger"
+	build_type = MECHFAB
+	build_path = /obj/item/organ/internal/cyberimp/arm/power_cord
+	materials = list(MAT_METAL=2000, MAT_GLASS=1000)
+	construction_time = 20 SECONDS
+	category = list("IPC")
+
+/datum/design/ipc_optics
+	name = "IPC Optical Sensor"
+	id = "ipc_optics"
+	build_type = MECHFAB
+	build_path = /obj/item/organ/internal/eyes/optical_sensor
+	materials = list(MAT_METAL=1000, MAT_GLASS=2500)
+	construction_time = 20 SECONDS
+	category = list("IPC")
+
+/datum/design/ipc_microphone
+	name = "IPC Microphone"
+	id = "ipc_microphone"
+	build_type = MECHFAB
+	build_path = /obj/item/organ/internal/ears/microphone
+	materials = list(MAT_METAL = 1000, MAT_GLASS = 2500)
+	construction_time = 20 SECONDS
+	category = list("IPC")
+
+// IPC Upgrades
+
+/datum/design/raiden_implant
+	name = "Reactive Repair Implant"
+	desc = "This implant reworks the IPC frame, in order to incorporate materials that return to their original shape after being damaged. Requires power to function."
+	id = "ci-raiden_implant"
+	req_tech = list("materials" = 5, "programming" = 5, "biotech" = 5, "magnets" = 5, "engineering" = 5)
+	build_type = MECHFAB
+	construction_time = 60
+	materials = list(MAT_METAL = 12500, MAT_SILVER = 12000, MAT_GOLD = 2500, MAT_PLASMA = 5000)
+	build_path = /obj/item/organ/internal/cyberimp/chest/ipc_repair
+	category = list("IPC Upgrades")
+
+/datum/design/monsoon_implant
+	name = "Magnetic Joints Implant"
+	desc = "This implant modifies IPC joints to use magnets, allowing easy re-attachment and fluid movement."
+	id = "ci-monsoon_implant"
+	req_tech = list("materials" = 5, "programming" = 5, "biotech" = 5, "magnets" = 5, "engineering" = 5)
+	build_type = MECHFAB
+	construction_time = 60
+	materials = list(MAT_METAL = 12500, MAT_SILVER = 12000, MAT_GOLD = 2500, MAT_PLASMA = 5000)
+	build_path = /obj/item/organ/internal/cyberimp/chest/ipc_joints/magnetic_joints
+	category = list("IPC Upgrades")
+
+/datum/design/sundown_implant
+	name = "Sealed Joints Implant"
+	desc = "This implant seals and reinforces IPC joints, securing the limbs better, though prone to locking up."
+	id = "ci-sundown_implant"
+	req_tech = list("materials" = 5, "programming" = 5, "biotech" = 5, "engineering" = 5, "combat" = 5)
+	build_type = MECHFAB
+	construction_time = 60
+	materials = list(MAT_METAL = 12500, MAT_SILVER = 12000, MAT_GOLD = 2500, MAT_PLASMA = 5000)
+	build_path = /obj/item/organ/internal/cyberimp/chest/ipc_joints/sealed
+	category = list("IPC Upgrades")
+
+/datum/design/flayer_pacification
+	name = "Mindflayer Pacification Implant"
+	desc = "This implant acts on mindflayer swarms like smoke to bees, making them much more docile."
+	id = "flayer_nullification_implant"
+	req_tech = list("materials" = 5, "programming" = 5,"engineering" = 5, "combat" = 5)
+	build_type = MECHFAB
+	construction_time = 6 SECONDS
+	materials = list(MAT_METAL = 10000, MAT_SILVER = 8000, MAT_GOLD = 3000, MAT_PLASMA = 10000)
+	build_path = /obj/item/organ/internal/cyberimp/chest/ipc_joints/flayer_pacification
+	category = list("IPC Upgrades")
+
+// Misc
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 /datum/design/mecha_tracking
 	name = "Exosuit Tracking Beacon"
 	id = "mecha_tracking"

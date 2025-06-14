@@ -49,3 +49,13 @@
 /obj/effect/mob_spawn/human/alive/hermit/Destroy()
 	new/obj/structure/fluff/empty_cryostasis_sleeper(get_turf(src))
 	return ..()
+<<<<<<< HEAD
+=======
+
+/datum/outfit/hermit
+	name = "Lavaland Hermit"
+	suit = /obj/item/clothing/suit/space/syndicate/orange
+	head = /obj/item/clothing/head/helmet/space/syndicate/orange
+	shoes = /obj/item/clothing/shoes/black
+	back = /obj/item/storage/backpack
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910

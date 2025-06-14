@@ -105,6 +105,21 @@
 	armour_penetration_flat = -10
 	light_color = LIGHT_COLOR_BLUE
 
+<<<<<<< HEAD
+=======
+/obj/item/projectile/beam/disabler/fake
+	name = "weakened disabler beam"
+	nodamage = 1
+	damage = 0
+
+/obj/item/projectile/beam/disabler/pellet
+	name = "split disabler beam"
+	icon_state = "scatterdisabler"
+	damage = 10
+	light_color = LIGHT_COLOR_BLUE
+	range = 8
+
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 /obj/item/projectile/beam/pulse
 	name = "pulse"
 	icon_state = "u_laser"

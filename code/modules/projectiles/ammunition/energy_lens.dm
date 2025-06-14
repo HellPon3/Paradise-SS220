@@ -181,6 +181,24 @@
 	randomspread = 1
 	delay = 0
 
+<<<<<<< HEAD
+=======
+/obj/item/ammo_casing/energy/disabler/fake
+	projectile_type = /obj/item/projectile/beam/disabler/fake
+	e_cost = 100
+
+/obj/item/ammo_casing/energy/disabler/eshotgun
+	projectile_type = /obj/item/projectile/beam/disabler/pellet
+	muzzle_flash_color = LIGHT_COLOR_LIGHTBLUE
+	select_name  = "disable"
+	e_cost = 75
+	fire_sound = 'sound/weapons/taser2.ogg'
+	harmful = FALSE
+	delay = 1 SECONDS
+	pellets = 6
+	variance = 25
+
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 /// seperate balancing for cyborg, again
 /obj/item/ammo_casing/energy/disabler/cyborg
 	e_cost = 250

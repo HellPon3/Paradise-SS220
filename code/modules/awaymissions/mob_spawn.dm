@@ -665,7 +665,15 @@
 
 /obj/effect/mob_spawn/human/alive/zombie/non_infectious/equip(mob/living/carbon/human/H)
 	ADD_TRAIT(H, TRAIT_NON_INFECTIOUS_ZOMBIE, ROUNDSTART_TRAIT)
+<<<<<<< HEAD
 	return ..()
+=======
+	. = ..()
+	for(var/datum/disease/zombie/zomb in H.viruses)
+		zomb.spread_flags = SPECIAL
+		zomb.visibility_flags = HIDDEN_PANDEMIC // This is how critical diseases block being interacted by the pandemic or copied. I hate it here.
+
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 
 /// these mob spawn subtypes trigger immediately (New or Initialize) and are not player controlled... since they're dead, you know?
 /obj/effect/mob_spawn/corpse

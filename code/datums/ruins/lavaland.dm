@@ -213,3 +213,56 @@
 	description = "A passenger shuttle crashsite of indeterminate origin."
 	suffix = "lavaland_surface_shuttlecrash.dmm"
 	allow_duplicates = FALSE
+<<<<<<< HEAD:code/datums/ruins/lavaland.dm
+=======
+
+/datum/map_template/ruin/lavaland/nt
+	name = "Nanotrasen Mining Complex"
+	id = "gulag"
+	description = "Nanotrasen's sturdy planetside mining station and labor camp."
+	suffix = "lavaland_surface_nt.dmm"
+	allow_duplicates = FALSE
+	always_place = TRUE
+	never_spawn_on_the_same_level = list("lavaland_relay")
+
+/datum/map_template/ruin/lavaland/legiongate
+	name = "Necropolis Gate"
+	id = "legiongate"
+	description = "At the heart of the city of the dead is a horror, so vile, and so powerful, that not even death can claim it."
+	suffix = "lavaland_surface_legiongate.dmm"
+	allow_duplicates = FALSE
+	always_place = TRUE
+
+/datum/map_template/ruin/lavaland/lavaland_relay
+	id = "lavaland_relay"
+	suffix = "lavaland_surface_mining_telecomms.dmm"
+	name = "Nanotrasen Lavaland Relay"
+	description = "Using the same technology as shelter capsules, these pods have been shot from orbit onto lavaland to demonstrate a quick and efficient way for an army to setup forward bases. \
+	Sadly, in their mass production rush, they lack a RTG power source and rely on pacmans, with many of the pods being shipped with the wrong fuel inside."
+	allow_duplicates = FALSE
+	never_spawn_on_the_same_level = list("gulag")
+	allow_duplicates = FALSE // Less space on lavaland. Ideally we would figure out a way to ban this from spawning the same level as the mining base
+	always_place = TRUE // Since only one can spawn for now, might as well ensure it.
+
+// MARK: Bridges
+
+/datum/map_template/ruin/lavaland/zlvl_bridge
+	prefix = "_maps/map_files/RandomRuins/LavaRuins/zlvl_bridges/"
+	ci_exclude = /datum/map_template/ruin/lavaland/zlvl_bridge
+
+/datum/map_template/ruin/lavaland/zlvl_bridge/vertical
+	ci_exclude = /datum/map_template/ruin/lavaland/zlvl_bridge/vertical
+
+/datum/map_template/ruin/lavaland/zlvl_bridge/vertical/one
+	name = "Vertical Bridge One"
+	suffix = "lavaland_zlvl_bridge_vertical_1.dmm"
+	ci_exclude = /datum/map_template/ruin/lavaland/zlvl_bridge/vertical/one
+
+/datum/map_template/ruin/lavaland/zlvl_bridge/horizontal
+	ci_exclude = /datum/map_template/ruin/lavaland/zlvl_bridge/horizontal
+
+/datum/map_template/ruin/lavaland/zlvl_bridge/horizontal/one
+	name = "Horizontal Bridge One"
+	suffix = "lavaland_zlvl_bridge_horizontal_1.dmm"
+	ci_exclude = /datum/map_template/ruin/lavaland/zlvl_bridge/horizontal/one
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910:code/datums/mapping/templates/lavaland_map_templates.dm

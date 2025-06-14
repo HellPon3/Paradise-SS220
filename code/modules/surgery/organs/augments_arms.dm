@@ -106,7 +106,7 @@
 
 	holder = item
 
-	holder.flags |= NODROP
+	holder.set_nodrop(TRUE, owner)
 	holder.resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	holder.slot_flags = null
 	holder.w_class = WEIGHT_CLASS_HUGE

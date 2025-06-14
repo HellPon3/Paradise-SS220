@@ -568,7 +568,7 @@
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin3)
 "auK" = (
-/obj/structure/chair/office/light{
+/obj/structure/chair/office{
 	dir = 8
 	},
 /turf/simulated/floor/mineral/plastitanium,
@@ -6733,6 +6733,18 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
+<<<<<<< HEAD
+=======
+"edf" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/structure/chair/office,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ghost_bar/indoor)
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 "edj" = (
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "CC_Cargo_Turret";
@@ -9278,7 +9290,7 @@
 	},
 /area/centcom/ss220/admin1)
 "fyn" = (
-/obj/structure/chair/office/light{
+/obj/structure/chair/office{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
@@ -11570,6 +11582,29 @@
 /obj/machinery/economy/vending/coffee/free,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
+<<<<<<< HEAD
+=======
+"gWs" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/turf/simulated/floor/grass,
+/area/ghost_bar/indoor/cave)
+"gWt" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ghost_bar/indoor)
+"gWB" = (
+/turf/simulated/floor/beach/away/coastline/alternative{
+	dir = 9
+	},
+/area/ghost_bar/outdoor/beach)
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 "gWM" = (
 /obj/structure/table/reinforced{
 	color = "#444444"
@@ -13892,6 +13927,24 @@
 	icon_state = "darkbrown"
 	},
 /area/centcom/ss220/admin3)
+<<<<<<< HEAD
+=======
+"ike" = (
+/obj/machinery/computer/security/telescreen{
+	desc = "Used for watching the Thunderdome.";
+	name = "Thunderdome Telescreen";
+	network = list("Thunderdome")
+	},
+/obj/structure/table/reinforced,
+/turf/simulated/floor/plasteel/dark,
+/area/tdome/tdomeobserve)
+"ikf" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/simulated/floor/wood/oak,
+/area/ghost_bar/indoor)
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 "ikt" = (
 /turf/simulated/wall/indestructible/syndicate{
 	smoothing_flags = 2
@@ -33284,7 +33337,7 @@
 /turf/simulated/floor/plasteel,
 /area/shuttle/escape)
 "tMn" = (
-/obj/structure/chair/office/light,
+/obj/structure/chair/office,
 /turf/simulated/floor/mineral/plastitanium,
 /area/centcom/ss220/general)
 "tMz" = (
@@ -33676,6 +33729,18 @@
 /obj/machinery/economy/vending/syndisnack,
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership)
+<<<<<<< HEAD
+=======
+"tYz" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/structure/chair/office,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ghost_bar/indoor)
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 "tYW" = (
 /obj/structure/closet/boxinggloves,
 /turf/simulated/floor/wood/oak,
@@ -36357,6 +36422,29 @@
 	},
 /turf/simulated/floor/carpet/lone,
 /area/centcom/ss220/bar)
+<<<<<<< HEAD
+=======
+"vBD" = (
+/obj/structure/flora/ausbushes/brflowers,
+/turf/simulated/floor/grass,
+/area/ghost_bar/outdoor)
+"vCe" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "whiteblue"
+	},
+/area/ghost_bar/indoor)
+"vCi" = (
+/obj/structure/table/wood,
+/obj/item/kitchen/knife/shiv/carrot,
+/turf/simulated/floor/plasteel{
+	icon_state = "alienvault"
+	},
+/area/admin)
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 "vCj" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -39221,7 +39309,7 @@
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin1)
 "xio" = (
-/obj/structure/chair/office/light{
+/obj/structure/chair/office{
 	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium,

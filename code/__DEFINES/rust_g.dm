@@ -175,6 +175,7 @@
 /proc/rustg_git_commit_date_head(format = "%F")
 	return RUSTG_CALL(RUST_G, "rg_git_commit_date_head")(format)
 
+<<<<<<< HEAD
 // Hashing Functions //
 
 #define rustg_hash_string(algorithm, text) RUSTG_CALL(RUST_G, "hash_string")(algorithm, text)
@@ -274,6 +275,8 @@
 #define RUSTG_ICONFORGE_CROP "Crop"
 #define RUSTG_ICONFORGE_SCALE "Scale"
 
+=======
+>>>>>>> f52435ff064b75d6426124baab926c0dd89c0910
 // Jobs Defines //
 
 #define RUSTG_JOB_NO_RESULTS_YET "NO RESULTS YET"
