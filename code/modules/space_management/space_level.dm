@@ -188,4 +188,19 @@ GLOBAL_LIST_INIT(cable_typecache, typecacheof(/obj/structure/cable))
 	log_debug("Building powernets on z-level '[zpos]'!")
 	SSmachines.setup_template_powernets(cables)
 	cables.Cut()
+<<<<<<< HEAD
 	log_debug("Took [stop_watch(watch)]s")
+=======
+
+/datum/space_level/proc/has_all_traits(list/traits)
+	// Cool, horrible set inclusion
+	return length(flags & traits) == length(traits)
+
+/datum/space_level/lavaland/set_transition_borders()
+	// really no reason why these need to be so large,
+	// especially since ruin placement is already constrained
+	transition_border_north = (world.maxy - 4)
+	transition_border_east = (world.maxx - 4)
+	transition_border_south = 3
+	transition_border_west = 3
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555

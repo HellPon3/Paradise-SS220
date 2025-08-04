@@ -6361,7 +6361,7 @@
 /area/ruin/space/spacehotelv1/guestroom2)
 "XV" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/turf_decal/siding/wood/neutral,
 /obj/effect/turf_decal/siding/wood/neutral{
@@ -6498,7 +6498,7 @@
 /area/ruin/space/spacehotelv1/bar)
 "Zf" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"

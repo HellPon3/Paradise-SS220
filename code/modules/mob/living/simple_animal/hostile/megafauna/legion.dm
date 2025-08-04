@@ -22,6 +22,7 @@ Difficulty: Medium
 	maxHealth = 2500
 	icon_state = "mega_legion"
 	icon_living = "mega_legion"
+	icon_dead = "mega_legion_dead"
 	desc = "One of many."
 	icon = 'icons/mob/lavaland/96x96megafauna.dmi'
 	attacktext = "chomps"
@@ -33,7 +34,6 @@ Difficulty: Medium
 	wander = FALSE
 	speed = 2
 	ranged = TRUE
-	del_on_death = TRUE
 	retreat_distance = 5
 	minimum_distance = 5
 	pixel_x = -32
@@ -51,6 +51,9 @@ Difficulty: Medium
 	mouse_opacity = MOUSE_OPACITY_ICON
 	stat_attack = UNCONSCIOUS // Overriden from /tg/ - otherwise Legion starts chasing its minions
 	appearance_flags = 512
+	contains_xeno_organ = TRUE
+	ignore_generic_organs = TRUE
+	surgery_container = /datum/xenobiology_surgery_container/legion
 
 /mob/living/simple_animal/hostile/megafauna/legion/Initialize(mapload)
 	. = ..()
@@ -84,6 +87,7 @@ Difficulty: Medium
 	qdel(src) //Suprise, it's the one on lavaland that regrows to full.
 
 /mob/living/simple_animal/hostile/megafauna/legion/death(gibbed)
+	icon = 'icons/mob/lavaland/corpses.dmi'
 	for(var/mob/living/simple_animal/hostile/megafauna/legion/other in GLOB.mob_list)
 		if(other != src)
 			other.loot = list(/obj/item/storm_staff) //Initial does not work with lists.

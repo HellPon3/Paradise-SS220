@@ -1498,7 +1498,11 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/ruin/unpowered/althland_excavation)
 "WH" = (
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/three_tile_hor,
+=======
+/obj/machinery/door/poddoor/multi_tile/triple,
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/althland_excavation)
 "Xl" = (

@@ -431,7 +431,11 @@
 #define INVESTIGATE_HOTMIC "hotmic"
 
 // The SQL version required by this version of the code
+<<<<<<< HEAD
 #define SQL_VERSION 642207
+=======
+#define SQL_VERSION 682208
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 
 // Vending machine stuff
 #define CAT_NORMAL (1<<0)
@@ -633,6 +637,7 @@
 
 #define BIOHAZARD_BLOB	"Blob"
 #define BIOHAZARD_XENO	"Xenomorphs"
+#define INCURSION_DEMONS "Demon Incursion"
 
 #define MAX_ALLOWED_TELEPORTS_PER_PROCESS 20
 
@@ -738,6 +743,20 @@ do { \
 #define BANK_PIN_MAX 99999
 <<<<<<< HEAD
 =======
+
+/// Defines for hidden organ techs
+#define TECH_MATERIAL "materials"
+#define TECH_ENGINEERING "engineering"
+#define TECH_PLASMA "plasmatech"
+#define TECH_POWER "powerstorage"
+#define TECH_BLUESPACE "bluespace"
+#define TECH_BIO "biotech"
+#define TECH_COMBAT "combat"
+#define TECH_MAGNETS "magnets"
+#define TECH_PROGRAM "programming"
+#define TECH_TOXINS "toxins"
+#define TECH_SYNDICATE "syndicate"
+#define TECH_ABDUCTOR "abductor"
 
 //! The number of seconds between the start of the UNIX and BYOND epochs.
 #define BYOND_EPOCH_UNIX 946702800

@@ -6306,8 +6306,14 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "uX" = (
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/two_tile_ver{
 	id_tag = "LHall"
+=======
+/obj/machinery/door/poddoor/multi_tile{
+	id_tag = "LHall";
+	dir = 4
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -6988,7 +6994,11 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate5)
 "xl" = (
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/three_tile_hor{
+=======
+/obj/machinery/door/poddoor/multi_tile/triple{
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	id_tag = "SpaceBattlePodbay1"
 	},
 /obj/structure/fans/tiny,
@@ -8030,7 +8040,13 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "AS" = (
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/three_tile_ver,
+=======
+/obj/machinery/door/poddoor/multi_tile/triple{
+	dir = 4
+	},
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "AT" = (
@@ -11121,8 +11137,14 @@
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/hallway7)
 "KC" = (
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/two_tile_ver{
 	id_tag = "Rhall"
+=======
+/obj/machinery/door/poddoor/multi_tile{
+	id_tag = "Rhall";
+	dir = 4
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral"
@@ -12655,7 +12677,11 @@
 	},
 /area/awaymission/space_battle/hallway9)
 "Py" = (
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/three_tile_hor{
+=======
+/obj/machinery/door/poddoor/multi_tile/triple{
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	id_tag = "SpaceBattlePodbay2"
 	},
 /obj/structure/fans/tiny,
@@ -15636,8 +15662,14 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/cruiser)
 "Zc" = (
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/two_tile_ver{
 	id_tag = "BR"
+=======
+/obj/machinery/door/poddoor/multi_tile{
+	id_tag = "BR";
+	dir = 4
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	},
 /obj/machinery/door_control/shutter/south{
 	id = "BR"

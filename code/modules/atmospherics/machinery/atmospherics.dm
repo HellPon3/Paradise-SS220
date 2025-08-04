@@ -76,6 +76,13 @@ Pipelines + Other Objects -> Pipe network
 	// Updates all pipe overlays and underlays
 	update_underlays()
 
+<<<<<<< HEAD
+=======
+/obj/machinery/atmospherics/onShuttleMove(turf/oldT, turf/T1, rotation, mob/calling_mob)
+	. = ..()
+	update_underlays()
+
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 /obj/machinery/atmospherics/Destroy()
 	SSair.atmos_machinery -= src
 	SSair.pipenets_to_build -= src
@@ -461,5 +468,8 @@ Pipelines + Other Objects -> Pipe network
 	update_icon()
 	if(user)
 		to_chat(user, "<span class='notice'>You set the target pressure of [src] to maximum.</span>")
+
+/obj/machinery/atmospherics/proc/get_machinery_pipelines()
+	return list()
 
 #undef VENT_SOUND_DELAY

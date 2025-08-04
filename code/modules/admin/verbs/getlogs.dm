@@ -20,11 +20,26 @@
 	set desc = "View/retrieve logfiles."
 	set category = "Admin"
 
+<<<<<<< HEAD
 	var/path = browse_files("data/logs/")
 	if(!path)
 		return
 
 	if(file_spam_check())
+=======
+	if(!check_rights(R_ADMIN|R_VIEWLOGS))
+		return
+
+	access_file_by_browsing_path(usr, "data/logs/")
+
+/// This proc allows download of past server logs saved within the data/logs/ folder by specifying a specific round ID.
+/client/proc/get_server_logs_by_round_id()
+	set name = "Get Round Logs"
+	set desc = "View/retrieve logfiles for a given round."
+	set category = "Admin"
+
+	if(!check_rights(R_ADMIN|R_VIEWLOGS))
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 		return
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")

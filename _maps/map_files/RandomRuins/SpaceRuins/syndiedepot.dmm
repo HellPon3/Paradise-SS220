@@ -324,7 +324,11 @@
 /turf/simulated/wall/mineral/plastitanium/nodiagonal,
 /area/syndicate_depot/core)
 "aZ" = (
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/two_tile_hor,
+=======
+/obj/machinery/door/poddoor/multi_tile,
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},

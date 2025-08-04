@@ -53,7 +53,9 @@
 		/obj/item/melee/classic_baton/telescopic = 1
 	)
 
-
+/datum/outfit/job/qm/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	ADD_TRAIT(H.mind, TRAIT_PACK_RAT, JOB_TRAIT)
 
 /datum/job/cargo_tech
 	title = "Cargo Technician"
@@ -87,7 +89,40 @@
 	id = /obj/item/card/id/supply
 	pda = /obj/item/pda/cargo
 
+<<<<<<< HEAD
+=======
+/datum/outfit/job/cargo_tech/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	ADD_TRAIT(H.mind, TRAIT_PACK_RAT, JOB_TRAIT)
 
+/datum/job/smith
+	title = "Smith"
+	flag = JOB_SMITH
+	department_flag = JOBCAT_SUPPORT
+	total_positions = 1
+	spawn_positions = 1
+	job_department_flags = DEP_FLAG_SUPPLY
+	supervisors = "the quartermaster"
+	department_head = list("Quartermaster")
+	selection_color = "#eeddbe"
+	access = list(
+		ACCESS_CARGO_BAY,
+		ACCESS_CARGO,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_MINERAL_STOREROOM,
+		ACCESS_MINERAL_STOREROOM,
+		ACCESS_MINING,
+		ACCESS_MINING_STATION,
+		ACCESS_SMITH
+	)
+	alt_titles = list("Metalworker", "Tinkerer")
+	outfit = /datum/outfit/job/smith
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
+
+
+/datum/outfit/job/smith/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	ADD_TRAIT(H.mind, TRAIT_SMITH, JOB_TRAIT)
 
 /datum/job/mining
 	title = "Shaft Miner"
@@ -130,6 +165,10 @@
 	backpack = /obj/item/storage/backpack/explorer
 	satchel = /obj/item/storage/backpack/satchel/explorer
 	box = /obj/item/storage/box/survival_mining
+
+/datum/outfit/job/mining/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	ADD_TRAIT(H.mind, TRAIT_BUTCHER, JOB_TRAIT)
 
 /datum/outfit/job/mining/equipped
 	name = "Shaft Miner"
@@ -200,6 +239,10 @@
 	backpack = /obj/item/storage/backpack/explorer
 	satchel = /obj/item/storage/backpack/satchel/explorer
 	box = /obj/item/storage/box/survival_mining
+
+/datum/outfit/job/explorer/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	ADD_TRAIT(H.mind, TRAIT_BUTCHER, JOB_TRAIT)
 
 //Food
 /datum/job/bartender
@@ -324,7 +367,9 @@
 	satchel = /obj/item/storage/backpack/satchel_hyd
 	dufflebag = /obj/item/storage/backpack/duffel/hydro
 
-
+/datum/outfit/job/hydro/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	ADD_TRAIT(H.mind, TRAIT_GREEN_THUMB, JOB_TRAIT)
 
 //Griff //BS12 EDIT
 
@@ -515,6 +560,10 @@
 	if(visualsOnly)
 		return
 	ADD_TRAIT(H, TRAIT_NEVER_MISSES_DISPOSALS, ROUNDSTART_TRAIT)
+
+/datum/outfit/job/janitor/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	ADD_TRAIT(H.mind, TRAIT_JANITOR, JOB_TRAIT)
 
 //More or less assistants
 /datum/job/librarian

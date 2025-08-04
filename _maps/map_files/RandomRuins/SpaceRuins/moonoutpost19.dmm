@@ -2593,8 +2593,14 @@
 /area/ruin/space/moonbase19)
 "ij" = (
 /obj/structure/fans/tiny,
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/impassable/four_tile_ver{
 	id_tag = "awaycargogate"
+=======
+/obj/machinery/door/poddoor/multi_tile/impassable/quad{
+	id_tag = "awaycargogate";
+	dir = 4
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	},
 /turf/simulated/floor/catwalk,
 /area/ruin/space/moonbase19)

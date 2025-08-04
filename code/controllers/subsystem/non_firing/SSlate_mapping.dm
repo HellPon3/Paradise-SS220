@@ -14,6 +14,20 @@ SUBSYSTEM_DEF(late_mapping)
 	GLOB.air_alarms = sortAtom(GLOB.air_alarms)
 	GLOB.apcs = sortAtom(GLOB.apcs)
 
+<<<<<<< HEAD
+=======
+	for(var/obj/machinery/computer/shuttle/console in SSmachines.get_by_type(/obj/machinery/computer/shuttle))
+		if(console.find_destinations_in_late_mapping)
+			console.connect()
+
+	// Use whether we have any interior door UIDs as a proxy
+	// to determine if we haven't been linked yet
+	var/list/controllers = SSmachines.get_by_type(/obj/machinery/airlock_controller)
+	for(var/obj/machinery/airlock_controller/controller as anything in controllers)
+		if(!length(controller.interior_doors))
+			controller.link_all_items()
+
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	if(length(maze_generators))
 		var/watch = start_watch()
 		log_startup_progress("Generating mazes...")

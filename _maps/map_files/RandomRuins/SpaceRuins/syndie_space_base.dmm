@@ -643,6 +643,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -803,6 +804,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -909,6 +911,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -1385,7 +1388,9 @@
 	},
 /area/ruin/unpowered/syndicate_space_base/service)
 "hV" = (
-/obj/machinery/door/airlock/hatch/syndicate,
+/obj/machinery/door/airlock/hatch/syndicate{
+	name = "Custodial Closet"
+	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1971,6 +1976,7 @@
 "lw" = (
 /obj/machinery/door/airlock/hatch/syndicate,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plating,
 /area/ruin/unpowered/syndicate_space_base/atmos)
 "lD" = (
@@ -2191,6 +2197,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -2496,6 +2503,17 @@
 	icon_state = "dark"
 	},
 /area/ruin/unpowered/syndicate_space_base/toxlaunch)
+"og" = (
+/obj/machinery/door/airlock/hatch/syndicate{
+	name = "Recycling"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/unpowered/syndicate_space_base/arrivals)
 "ol" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2890,7 +2908,6 @@
 /turf/simulated/floor/redgrid,
 /area/ruin/unpowered/syndicate_space_base/telecomms)
 "qR" = (
-/obj/machinery/door/airlock/hatch/syndicate,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2900,6 +2917,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/airlock/hatch/syndicate{
+	name = "Library"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -4388,6 +4408,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -4690,9 +4711,21 @@
 	icon_state = "dark"
 	},
 /area/ruin/unpowered/syndicate_space_base/main)
+"Bw" = (
+/obj/machinery/door/airlock/hatch/syndicate{
+	name = "Teleporter Room"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/unpowered/syndicate_space_base/arrivals)
 "Bx" = (
 /obj/machinery/door/airlock/hatch/syndicate,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -4751,6 +4784,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -5153,7 +5187,9 @@
 	},
 /area/ruin/unpowered/syndicate_space_base/storage)
 "EH" = (
-/obj/machinery/door/airlock/hatch/syndicate,
+/obj/machinery/door/airlock/hatch/syndicate{
+	name = "Dressing Room"
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -5354,6 +5390,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -5363,6 +5400,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -5489,6 +5527,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -5545,6 +5584,21 @@
 	icon_state = "white"
 	},
 /area/ruin/unpowered/syndicate_space_base/medbay)
+"Gu" = (
+/obj/machinery/door/airlock/hatch/syndicate{
+	name = "Library"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/unpowered/syndicate_space_base/arrivals)
 "Gz" = (
 /obj/effect/spawner/window/plastitanium,
 /turf/simulated/floor/plating,
@@ -5643,6 +5697,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -6348,13 +6403,15 @@
 /turf/simulated/floor/plating/asteroid/ancient,
 /area/ruin/unpowered/syndicate_space_base/cave)
 "Ln" = (
-/obj/machinery/door/airlock/hatch/syndicate,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/door/airlock/hatch/syndicate{
+	name = "Dressing Room"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -6470,6 +6527,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -7487,6 +7545,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -8094,6 +8153,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -8297,6 +8357,7 @@
 /obj/machinery/door/airlock/hatch/syndicate,
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -8340,6 +8401,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -8450,6 +8512,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -8666,6 +8729,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/autoname/syndie_base,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -9628,7 +9692,7 @@ xn
 nf
 hi
 QN
-hV
+Bw
 zH
 zH
 Xo
@@ -9778,7 +9842,7 @@ xn
 xn
 xn
 IT
-Ln
+Gu
 xn
 xn
 xn
@@ -10077,7 +10141,7 @@ wJ
 xn
 vR
 Ic
-hV
+og
 xD
 yc
 Og

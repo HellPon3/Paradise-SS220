@@ -662,6 +662,13 @@
 	assemblytype = /obj/structure/door_assembly/multi_tile
 	paintable = FALSE
 
+<<<<<<< HEAD
+=======
+/obj/machinery/door/airlock/multi_tile/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+	update_bounds()
+
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 /obj/machinery/door/airlock/multi_tile/narsie_act()
 	return
 
@@ -669,15 +676,15 @@
 	opacity = FALSE
 	glass = TRUE
 
+/// Player view blocking fillers for multi-tile doors
 /obj/airlock_filler_object
 	name = "airlock fluff"
 	desc = "You shouldn't be able to see this fluff!"
-	icon = null
-	icon_state = null
 	density = TRUE
 	opacity = TRUE
 	anchored = TRUE
 	invisibility = INVISIBILITY_MAXIMUM
+<<<<<<< HEAD
 	//atmos_canpass = CANPASS_DENSITY
 	/// The door/airlock this fluff panel is attached to
 	var/obj/machinery/door/filled_airlock
@@ -686,6 +693,11 @@
 	if(isnull(filled_airlock))
 		stack_trace("Someone bumped into an airlock filler with no parent airlock specified!")
 	return filled_airlock.Bumped(A)
+=======
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	/// The door/airlock this fluff panel is attached to
+	var/obj/machinery/door/filled_airlock
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 
 /obj/airlock_filler_object/Destroy()
 	filled_airlock = null
@@ -703,6 +715,7 @@
 	UnregisterSignal(filled_airlock)
 	qdel(src)
 
+<<<<<<< HEAD
 /// Multi-tile airlocks (using a filler panel) have special handling for movables with PASS_FLAG_GLASS
 /obj/airlock_filler_object/CanPass(atom/movable/mover, border_dir)
 	. = ..()
@@ -711,6 +724,11 @@
 
 	if(istype(mover))
 		return !opacity
+=======
+/// They only block our visuals, not movement
+/obj/airlock_filler_object/CanPass(atom/movable/mover, border_dir)
+	return TRUE
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 
 /obj/airlock_filler_object/singularity_act()
 	return

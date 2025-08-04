@@ -108,8 +108,12 @@ GLOBAL_DATUM_INIT(space_manager, /datum/zlev_manager, new())
 
 // Increments the max z-level by one
 // For convenience's sake returns the z-level added
+<<<<<<< HEAD
 /datum/zlev_manager/proc/add_new_zlevel(name, linkage = SELFLOOPING, traits = list(BLOCK_TELEPORT))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_Z, args)
+=======
+/datum/zlev_manager/proc/add_new_zlevel(name, linkage = SELFLOOPING, traits = list(BLOCK_TELEPORT), transition_tag, level_type = /datum/space_level)
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	if(name in levels_by_name)
 		throw EXCEPTION("Name already in use: [name]")
 	world.maxz++
@@ -119,6 +123,7 @@ GLOBAL_DATUM_INIT(space_manager, /datum/zlev_manager, new())
 	var/datum/space_level/S = new /datum/space_level(our_z, name, transition_type = linkage, traits = traits)
 	levels_by_name[name] = S
 	z_list["[our_z]"] = S
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_Z, name, linkage, traits, transition_tag, level_type, our_z)
 	return our_z
 
 /datum/zlev_manager/proc/cut_levels_downto(new_maxz)

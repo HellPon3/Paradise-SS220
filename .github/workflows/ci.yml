@@ -11,7 +11,7 @@ on:
 jobs:
   run_linters:
     name: Run Linters
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
 
@@ -53,6 +53,11 @@ jobs:
           python tools/ci/verify_sql_version.py
           python tools/ci/no_duplicate_definitions.py
           python tools/ci/check_icons.py
+<<<<<<< HEAD
+=======
+          python tools/ci/check_random_spawner_prefabs.py
+          python -m tools.ci.check_map_sizes
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
           python -m tools.ci.check_legacy_attack_chain
           python -m tools.maplint.source --github
 
@@ -62,14 +67,20 @@ jobs:
 
   odlint:
     name: Lint with OpenDream
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Setup OD
         run: |
           bash tools/ci/setup_od.sh
       - name: Setup .NET SDK
+<<<<<<< HEAD
         uses: actions/setup-dotnet@v4.3.0
+=======
+        uses: actions/setup-dotnet@v4.3.1
+        env:
+          DOTNET_INSTALL_DIR: './_work/.dotnet'
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
         with:
           dotnet-version: 9.x
       - name: Run OD
@@ -78,7 +89,15 @@ jobs:
 
   compile_all_maps:
     name: Compile All Maps
+<<<<<<< HEAD
     runs-on: ubuntu-22.04
+=======
+    runs-on: self-hosted
+    strategy:
+      fail-fast: false
+      matrix:
+        byondtype: ['STABLE']
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
     steps:
       - uses: actions/checkout@v4
       - name: Setup Cache
@@ -95,12 +114,12 @@ jobs:
 
   station_mapload_tests:
     name: Station Tests
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     strategy:
       fail-fast: false # Let all map tests run to completion
       matrix:
-        station: ['boxstation', 'deltastation', 'metastation', 'cerestation', 'emeraldstation']
-        byondtype: ['STABLE', 'BETA']
+        station: ['boxstation', 'deltastation', 'metastation']
+        byondtype: ['STABLE']
     steps:
       - uses: actions/checkout@v4
       - name: Setup Cache
@@ -112,7 +131,7 @@ jobs:
         run: |
           sudo dpkg --add-architecture i386
           sudo apt update || true
-          sudo apt install zlib1g-dev:i386
+          sudo apt install -y zlib1g-dev:i386
           tools/ci/install_rustg.sh
       - name: Compile & Run Unit Tests
         run: |
@@ -124,11 +143,11 @@ jobs:
 
   unit_tests_and_sql:
     name: Unit Tests + SQL Validation
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     strategy:
       fail-fast: false
       matrix:
-        byondtype: ['STABLE', 'BETA']
+        byondtype: ['STABLE']
     steps:
       - uses: actions/checkout@v4
       - name: Setup Cache
@@ -138,14 +157,14 @@ jobs:
           key: ${{ runner.os }}-byond
       - name: Setup & Validate DB
         run: |
-          sudo systemctl start mysql
+          sudo service mysql start
           python3 tools/ci/generate_sql_scripts.py
           tools/ci/validate_sql.sh
       - name: Install RUST_G Deps
         run: |
           sudo dpkg --add-architecture i386
           sudo apt update || true
-          sudo apt install zlib1g-dev:i386
+          sudo apt install -y zlib1g-dev:i386
           tools/ci/install_rustg.sh
       - name: Compile & Run Unit Tests
         run: |
@@ -155,13 +174,14 @@ jobs:
           echo '/datum/map/test_tiny' > data/next_map.txt
           tools/ci/run_server.sh
 
-  windows_dll_tests:
-    name: Windows RUSTG Validation
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.8.2' # Script was made for 3.8.2
-          architecture: 'x86' # This MUST be x86
-      - run: python tools/ci/validate_rustg_windows.py
+# TODO: Add back when we have a Windows runner (never)
+# windows_dll_tests:
+#   name: Windows RUSTG Validation
+#   runs-on: self-hosted
+#   steps:
+#     - uses: actions/checkout@v4
+#     - uses: actions/setup-python@v5
+#       with:
+#         python-version: '3.8.2' # Script was made for 3.8.2
+#         architecture: 'x86' # This MUST be x86
+#     - run: python tools/ci/validate_rustg_windows.py

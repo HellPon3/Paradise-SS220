@@ -61,13 +61,12 @@
 				bottom_left.y_pos -= padding
 				top_right.x_pos += padding
 				top_right.y_pos += padding
-				var/list/affected_turfs = block(bottom_left.x_pos, bottom_left.y_pos, z_level, top_right.x_pos, top_right.y_pos, z_level)
 
 				// One sanity check just in case
 				if(!ruin.fits_in_map_bounds(central_turf, centered = TRUE))
 					valid = FALSE
 
-				for(var/turf/check in affected_turfs)
+				for(var/turf/check in block(bottom_left.x_pos, bottom_left.y_pos, z_level, top_right.x_pos, top_right.y_pos, z_level))
 					var/area/new_area = get_area(check)
 					if(!(istype(new_area, area_whitelist)) || check.flags & NO_RUINS)
 						valid = FALSE
@@ -76,6 +75,7 @@
 				if(!valid)
 					continue
 
+<<<<<<< HEAD:code/datums/ruins/ruin_placer.dm
 				for(var/turf/T in affected_turfs)
 					for(var/obj/structure/spawner/nest in T)
 						qdel(nest)
@@ -85,6 +85,11 @@
 						qdel(plant)
 
 				ruin.load(central_turf, centered = TRUE)
+=======
+				var/loaded = ruin.load(central_turf, centered = TRUE)
+				if(!loaded)
+					stack_trace("ruin [ruin.suffix] failed to load at [COORD(central_turf)] after valid bounds check")
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555:code/datums/mapping/ruin_placer.dm
 				for(var/turf/T in ruin.get_affected_turfs(central_turf, centered = TRUE)) // Just flag the actual ruin turfs!
 					T.flags |= NO_RUINS
 				new /obj/effect/landmark/ruin(central_turf, ruin)
@@ -144,6 +149,7 @@
 			continue
 		ruins_availible[R] = R.placement_weight
 
+<<<<<<< HEAD:code/datums/ruins/ruin_placer.dm
 	while(ruin_budget > 0 && (length(ruins_availible) || length(forced_ruins)))
 		var/datum/map_template/ruin/current_pick
 		var/forced = FALSE
@@ -156,6 +162,18 @@
 				break
 		else //Otherwise just pick random one
 			current_pick = pickweight(ruins_availible)
+=======
+	forced_ruins = sortTim(forced_ruins, GLOBAL_PROC_REF(cmp_ruin_placement_cost))
+	while(length(forced_ruins))
+		var/datum/map_template/ruin/ruin = forced_ruins[length(forced_ruins)]
+		var/datum/ruin_placement/placement = new(ruin, base_padding_ = base_padding)
+		var/placement_success = placement.try_to_place(z_levels, area_whitelist)
+		if(placement_success)
+			// this may push us into the negative but always_place means always_place
+			ruin_budget -= ruin.get_cost()
+		else
+			stack_trace("failed to place required ruin [ruin.suffix]")
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555:code/datums/mapping/ruin_placer.dm
 
 		var/datum/ruin_placement/placement = new(current_pick, base_padding_ = base_padding)
 		var/placement_success = placement.try_to_place(forced_z ? forced_z : z_levels, area_whitelist)

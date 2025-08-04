@@ -144,6 +144,7 @@
 
 /obj/structure/door_assembly/multi_tile/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	if(dir in list(EAST, WEST))
 		bound_width = width * world.icon_size
 		bound_height = world.icon_size
@@ -160,6 +161,47 @@
 		bound_width = world.icon_size
 		bound_height = width * world.icon_size
 
+=======
+	if(direction)
+		setDir(direction)
+
+/obj/structure/door_assembly/multi_tile/setDir(newdir)
+	. = ..()
+	update_bounds()
+
+/obj/structure/door_assembly/multi_tile/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+	update_bounds()
+
+/obj/structure/door_assembly/multi_tile/proc/update_bounds()
+	if(width <= 1)
+		return
+
+	if(dir in list(SOUTH, NORTH))
+		bound_width = width * world.icon_size
+		bound_height = world.icon_size
+		bound_y = 0
+		pixel_y = 0
+		if(dir == NORTH)
+			bound_x = -(width - 1) * world.icon_size
+			pixel_x = -(width - 1) * world.icon_size
+		else
+			bound_x = 0
+			pixel_x = 0
+
+	else
+		bound_width = world.icon_size
+		bound_height = width * world.icon_size
+		bound_x = 0
+		pixel_x = 0
+		if(dir == WEST)
+			bound_y = -(width - 1) * world.icon_size
+			pixel_y = -(width - 1) * world.icon_size
+		else
+			bound_y = 0
+			pixel_y = 0
+
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 /obj/structure/door_assembly/door_assembly_cult
 	name = "cult airlock assembly"
 	icon = 'icons/obj/doors/airlocks/cult/runed/cult.dmi'

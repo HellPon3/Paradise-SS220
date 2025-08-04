@@ -258,6 +258,15 @@ GLOBAL_LIST_INIT(sandbag_recipes, list (
 	. += ""
 	. += "It finds uses in a great number of applications, including medicine, nuclear power generation, radiation shielding, cybernetic and robotic components, as well as weapons."
 
+<<<<<<< HEAD
+=======
+/obj/item/stack/sheet/mineral/uranium/ten
+	amount = 10
+
+/obj/item/stack/sheet/mineral/uranium/twenty
+	amount = 20
+
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 /obj/item/stack/sheet/mineral/uranium/fifty
 	amount = 50
 
@@ -278,6 +287,9 @@ GLOBAL_LIST_INIT(sandbag_recipes, list (
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
 	point_value = 20
+
+/obj/item/stack/sheet/mineral/plasma/twenty
+	amount = 20
 
 /obj/item/stack/sheet/mineral/plasma/examine_more(mob/user)
 	. = ..()
@@ -341,6 +353,9 @@ GLOBAL_LIST_INIT(sandbag_recipes, list (
 	. += ""
 	. += "It is widely used in the production of advanced electronics and chemical catalysts, as well as a few specialised medicines. Also used as a relatively safe store of wealth that is not affected by the economics of cash."
 
+/obj/item/stack/sheet/mineral/gold/twenty
+	amount = 20
+
 /obj/item/stack/sheet/mineral/gold/fifty
 	amount = 50
 
@@ -359,6 +374,9 @@ GLOBAL_LIST_INIT(sandbag_recipes, list (
 	merge_type = /obj/item/stack/sheet/mineral/silver
 	materials = list(MAT_SILVER = MINERAL_MATERIAL_AMOUNT)
 	point_value = 20
+
+/obj/item/stack/sheet/mineral/silver/twenty
+	amount = 20
 
 /obj/item/stack/sheet/mineral/silver/examine_more(mob/user)
 	. = ..()

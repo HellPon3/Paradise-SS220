@@ -1520,7 +1520,11 @@
 "hW" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/firedoor,
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/impassable{
+=======
+/obj/machinery/door/poddoor/impassable{
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	id_tag = "DS_Tram"
 	},
 /turf/simulated/floor/plating,
@@ -3909,9 +3913,14 @@
 "yb" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/firedoor,
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/impassable/three_tile_ver{
+=======
+/obj/machinery/door/poddoor/multi_tile/impassable/triple{
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	id_tag = "DS_BossStorage";
-	name = "warehouse valuables storage blast door"
+	name = "warehouse valuables storage blast door";
+	dir = 4
 	},
 /turf/simulated/floor/catwalk,
 /area/ruin/space/deepstorage)
@@ -4306,7 +4315,11 @@
 /obj/machinery/door/airlock/vault{
 	name = "Auxiliary Power Room"
 	},
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/impassable{
+=======
+/obj/machinery/door/poddoor/impassable{
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	id_tag = "DS_Engineering"
 	},
 /turf/simulated/floor/catwalk,
@@ -4388,8 +4401,14 @@
 	},
 /area/ruin/space/deepstorage)
 "AN" = (
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/impassable/three_tile_ver{
 	id_tag = "DS_FrontGate"
+=======
+/obj/machinery/door/poddoor/multi_tile/impassable/triple{
+	id_tag = "DS_FrontGate";
+	dir = 4
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	},
 /turf/simulated/floor/catwalk/airless,
 /area/ruin/space/deepstorage)
@@ -5880,7 +5899,11 @@
 "LJ" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/firedoor,
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/impassable/three_tile_hor{
+=======
+/obj/machinery/door/poddoor/multi_tile/impassable/triple{
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	id_tag = "DS_BossStorage";
 	name = "warehouse blast doors"
 	},
@@ -6908,7 +6931,11 @@
 "TK" = (
 /obj/effect/mapping_helpers/airlock/access/all/ruins/deepstorage,
 /obj/machinery/door/airlock/highsecurity,
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/impassable{
+=======
+/obj/machinery/door/poddoor/impassable{
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	id_tag = "DS_Storage"
 	},
 /turf/simulated/floor/plasteel{
@@ -6985,7 +7012,11 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/ruins/deepstorage,
 /obj/machinery/door/airlock/highsecurity,
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/impassable{
+=======
+/obj/machinery/door/poddoor/impassable{
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	id_tag = "DS_Storage"
 	},
 /turf/simulated/floor/plasteel{

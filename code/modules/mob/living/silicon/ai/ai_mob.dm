@@ -840,8 +840,13 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 	Bot.call_bot(src, waypoint)
 
+<<<<<<< HEAD
 /mob/living/silicon/ai/alarm_triggered(src, class, area/A, list/O, obj/alarmsource)
 	if(!(class in alarms_listend_for))
+=======
+/mob/living/silicon/ai/alarm_triggered(source, class, area/A, list/O, obj/alarmsource)
+	if(!(class in alarms_listened_for))
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 		return
 	if(alarmsource.z != z)
 		return
@@ -867,7 +872,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	if(viewalerts)
 		ai_alerts()
 
-/mob/living/silicon/ai/alarm_cancelled(src, class, area/A, obj/origin, cleared)
+/mob/living/silicon/ai/alarm_cancelled(source, class, area/A, obj/origin, cleared)
 	if(cleared)
 		if(!(class in alarms_listend_for))
 			return

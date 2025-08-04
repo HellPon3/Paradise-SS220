@@ -63,7 +63,11 @@
 /turf/simulated/floor/plasteel,
 /area/ruin/space/powered)
 "jM" = (
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/impassable/three_tile_hor{
+=======
+/obj/machinery/door/poddoor/multi_tile/impassable/triple{
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	id_tag = "freighterblastdoor1"
 	},
 /obj/structure/fans/tiny,
@@ -457,7 +461,11 @@
 /area/ruin/space/powered)
 "Je" = (
 /obj/machinery/door/airlock/multi_tile/glass{
+<<<<<<< HEAD
 	dir = 1
+=======
+	dir = 4
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"

@@ -158,8 +158,10 @@
 				if("eyes")
 					active_character.e_colour = rand_hex_color()
 				if("s_tone")
-					if(S.bodyflags & (HAS_SKIN_TONE|HAS_ICON_SKIN_TONE))
-						active_character.s_tone = random_skin_tone()
+					if(S.bodyflags & HAS_SKIN_TONE)
+						active_character.s_tone = 35 - random_skin_tone(active_character.species)
+					else if(S.bodyflags & HAS_ICON_SKIN_TONE)
+						active_character.s_tone = random_skin_tone(active_character.species)
 				if("s_color")
 					if(S.bodyflags & HAS_SKIN_COLOR)
 						active_character.s_colour = rand_hex_color()
@@ -230,7 +232,65 @@
 							S.species_subtype = subtype.name
 							reset_styles(subtype, S)
 						else
+<<<<<<< HEAD
 							reset_styles(S)
+=======
+							active_character.ha_style = "None" // No Vulp ears on Unathi
+							active_character.hacc_colour = rand_hex_color()
+
+						if(NS.bodyflags & HAS_HEAD_MARKINGS) //Species with head markings.
+							active_character.m_styles["head"] = random_marking_style("head", active_character.species, robohead, null, active_character.alt_head)
+						else
+							active_character.m_styles["head"] = "None"
+							active_character.m_colours["head"] = "#000000"
+
+						if(NS.bodyflags & HAS_BODY_MARKINGS) //Species with body markings/tattoos.
+							active_character.m_styles["body"] = random_marking_style("body", active_character.species)
+						else
+							active_character.m_styles["body"] = "None"
+							active_character.m_colours["body"] = "#000000"
+
+						if(NS.bodyflags & HAS_TAIL_MARKINGS) //Species with tail markings.
+							active_character.m_styles["tail"] = random_marking_style("tail", active_character.species, null, active_character.body_accessory)
+						else
+							active_character.m_styles["tail"] = "None"
+							active_character.m_colours["tail"] = "#000000"
+
+						// Don't wear another species' underwear!
+						var/datum/sprite_accessory/SA = GLOB.underwear_list[active_character.underwear]
+						if(!SA || !(active_character.species in SA.species_allowed))
+							active_character.underwear = random_underwear(active_character.body_type, active_character.species)
+
+						SA = GLOB.undershirt_list[active_character.undershirt]
+						if(!SA || !(active_character.species in SA.species_allowed))
+							active_character.undershirt = random_undershirt(active_character.body_type, active_character.species)
+
+						SA = GLOB.socks_list[active_character.socks]
+						if(!SA || !(active_character.species in SA.species_allowed))
+							active_character.socks = random_socks(active_character.body_type, active_character.species)
+
+						//reset skin tone and colour
+						if(NS.bodyflags & HAS_SKIN_TONE)
+							active_character.s_tone = 35 - random_skin_tone(active_character.species)
+						else if(NS.bodyflags & HAS_ICON_SKIN_TONE)
+							active_character.s_tone = random_skin_tone(active_character.species)
+						else
+							active_character.s_tone = 1
+
+						if(!(NS.bodyflags & HAS_SKIN_COLOR))
+							active_character.s_colour = "#000000"
+
+						active_character.alt_head = "None" //No alt heads on species that don't have them.
+						active_character.speciesprefs = 0 //My Vox tank shouldn't change how my future Grey talks.
+						active_character.body_accessory = random_body_accessory(NS.name, NS.optional_body_accessory)
+
+						//Reset prosthetics.
+						active_character.organ_data = list()
+						active_character.rlimb_data = list()
+
+						if(!(NS.autohiss_basic_map))
+							active_character.autohiss_mode = AUTOHISS_OFF
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 				if("speciesprefs")
 					active_character.speciesprefs = !active_character.speciesprefs //Starts 0, so if someone clicks the button up top there, this won't be 0 anymore. If they click it again, it'll go back to 0.
 				if("language")
@@ -606,18 +666,18 @@
 					active_character.e_colour = new_eyes
 
 				if("s_tone")
+					var/new_s_tone
 					if(S.bodyflags & HAS_SKIN_TONE)
-						var/new_s_tone = input(user, "Choose your character's skin-tone:\n(Light 1 - 220 Dark)", "Character Preference")  as num|null
+						new_s_tone = tgui_input_number(user, "Choose your character's skin-tone:\n(Light 1 - 220 Dark)", "Character Preference", -active_character.s_tone + 35, 220, 1)
 						if(isnull(new_s_tone))
 							return
-						active_character.s_tone = 35 - max(min(round(new_s_tone), 220), 1)
+						active_character.s_tone = 35 - new_s_tone
 					else if(S.bodyflags & HAS_ICON_SKIN_TONE)
-						var/const/MAX_LINE_ENTRIES = 4
 						var/prompt = "Choose your character's skin tone: 1-[length(S.icon_skin_tones)]\n(Light to Dark)"
-						var/skin_c = tgui_input_number(user, prompt, "Character Preference", active_character.s_tone, length(S.icon_skin_tones), 1)
-						if(isnull(skin_c))
+						new_s_tone = tgui_input_number(user, prompt, "Character Preference", active_character.s_tone, length(S.icon_skin_tones), 1)
+						if(isnull(new_s_tone))
 							return
-						active_character.s_tone = skin_c
+						active_character.s_tone = new_s_tone
 
 				if("skin")
 					if((S.bodyflags & HAS_SKIN_COLOR) || GLOB.body_accessory_by_species[active_character.species] || check_rights(R_ADMIN, 0, user))

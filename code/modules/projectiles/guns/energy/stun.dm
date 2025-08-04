@@ -130,7 +130,7 @@
 
 /obj/item/gun/energy/disabler/smg/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/automatic_fire, 0.15 SECONDS, allow_akimbo = FALSE)
+	AddComponent(/datum/component/automatic_fire, 0.20 SECONDS, allow_akimbo = FALSE)
 
 /obj/item/gun/energy/disabler/cyborg
 	name = "cyborg disabler"

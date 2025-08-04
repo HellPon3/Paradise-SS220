@@ -154,7 +154,11 @@
 /area/shuttle/abandoned)
 "tV" = (
 /obj/machinery/door/airlock/multi_tile/glass{
+<<<<<<< HEAD
 	dir = 1
+=======
+	dir = 4
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/abandoned)

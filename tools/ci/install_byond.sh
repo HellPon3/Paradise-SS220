@@ -1,7 +1,21 @@
 #!/bin/bash
 set -eo pipefail
 
+<<<<<<< HEAD
 source _build_dependencies.sh
+=======
+# This is needed now
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt install -y libcurl4:i386
+
+if [ -z "${BYOND_MAJOR+x}" ]; then
+  source _build_dependencies.sh
+  # if some other build step hasn't specified the specific BYOND version we're not
+  # gonna get it straight from _build_dependencies.sh so one more fallback here
+  BYOND_MAJOR=$STABLE_BYOND_MAJOR
+  BYOND_MINOR=$STABLE_BYOND_MINOR
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 
 TARGET_MAJOR=$STABLE_BYOND_MAJOR
 TARGET_MINOR=$STABLE_BYOND_MINOR
@@ -23,7 +37,11 @@ else
   rm -rf "$HOME/BYOND"
   mkdir -p "$HOME/BYOND"
   cd "$HOME/BYOND"
+<<<<<<< HEAD
   curl "http://www.byond.com/download/build/${TARGET_MAJOR}/${TARGET_MAJOR}.${TARGET_MINOR}_byond_linux.zip" -o byond.zip
+=======
+  curl "https://cmss13-devs.github.io/byond-build-mirror/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip" -H "User-Agent: ss220club CI" -o byond.zip
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
   unzip byond.zip
   rm byond.zip
   cd byond

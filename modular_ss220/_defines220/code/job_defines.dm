@@ -28,10 +28,17 @@
 
 // ====================================
 //			JOBCAT_MEDSCI
+<<<<<<< HEAD
 // Начинаются с JOB_CORONER		(1<<10)
 #define JOB_INTERN				(1<<11)
 #define JOB_STUDENT				(1<<12)
 #define JOB_MECHANIC			(1<<13)
+=======
+// Начинаются с JOB_XENOBIOLOGIST	(1<<11)
+#define JOB_INTERN				(JOB_XENOBIOLOGIST<<1)
+#define JOB_STUDENT				(JOB_INTERN<<1)
+#define JOB_MECHANIC			(JOB_STUDENT<<1)
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 
 #define JOB_ADMINISTRATOR		(1<<14)
 #define JOB_TOURIST_TSF			(1<<15)

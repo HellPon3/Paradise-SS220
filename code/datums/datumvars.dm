@@ -81,7 +81,37 @@
 //please call . = ..() first and append to the result, that way parent items are always at the top and child items are further down
 //add seperaters by doing . += "---"
 /datum/proc/vv_get_dropdown()
+	SHOULD_CALL_PARENT(TRUE)
+
 	. = list()
+
+	VV_DROPDOWN_OPTION("", "---")
+	VV_DROPDOWN_OPTION(VV_HK_PROC_CALL, "Call Proc")
+	VV_DROPDOWN_OPTION(VV_HK_MARK_OBJECT, "Mark Object")
+	VV_DROPDOWN_OPTION(VV_HK_JUMP_TO, "Jump to Object")
+	VV_DROPDOWN_OPTION(VV_HK_DELETE, "Delete")
+	VV_DROPDOWN_OPTION(VV_HK_TRAITMOD, "Modify Traits")
+	VV_DROPDOWN_OPTION(VV_HK_ADDCOMPONENT, "Add Component/Element")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVECOMPONENT, "Remove Component/Element")
+	VV_DROPDOWN_OPTION(VV_HK_MASSREMOVECOMPONENT, "Mass Remove Component/Element")
+	VV_DROPDOWN_OPTION("", "---")
+
+/**
+ * This proc is only called if everything topic-wise is verified. The only verifications that should happen here is things like permission checks!
+ * href_list is a reference, modifying it in these procs WILL change the rest of the proc in topic.dm of admin/view_variables!
+ * This proc is for "high level" actions like admin heal/set species/etc/etc. The low level debugging things should go in admin/view_variables/topic_basic.dm in case this runtimes.
+ */
+/datum/proc/vv_do_topic(list/href_list)
+	if(!usr || !usr.client || !usr.client.holder || !check_rights(R_VAREDIT))
+		return FALSE //This is VV, not to be called by anything else.
+	if(href_list[VV_HK_MODIFY_TRAITS])
+		usr.client.holder.modify_traits(src)
+
+	return TRUE
+
+/datum/proc/vv_get_header()
+	. = list()
+<<<<<<< HEAD
 	. += "---"
 	.["Call Proc"] = "byond://?_src_=vars;proc_call=[UID()]"
 	.["Mark Object"] = "byond://?_src_=vars;mark_object=[UID()]"
@@ -89,16 +119,33 @@
 	.["Delete"] = "byond://?_src_=vars;delete=[UID()]"
 	.["Modify Traits"] = "byond://?_src_=vars;traitmod=[UID()]"
 	. += "---"
+=======
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 
 /client/vv_get_dropdown()
-	. = list()
-	.["Manipulate Colour Matrix"] = "byond://?_src_=vars;manipcolours=[UID()]"
-	. += "---"
-	.["Call Proc"] = "byond://?_src_=vars;proc_call=[UID()]"
-	.["Mark Object"] = "byond://?_src_=vars;mark_object=[UID()]"
-	.["Delete"] = "byond://?_src_=vars;delete=[UID()]"
-	.["Modify Traits"] = "byond://?_src_=vars;traitmod=[UID()]"
-	. += "---"
+	. = ..()
+
+	VV_DROPDOWN_OPTION(VV_HK_MANIPULATE_COLOR_MATRIX, "Manipulate Color Matrix")
+	VV_DROPDOWN_OPTION("", "---")
+	VV_DROPDOWN_OPTION(VV_HK_PROC_CALL, "Call Proc")
+	VV_DROPDOWN_OPTION(VV_HK_MARK_OBJECT, "Mark Object")
+	VV_DROPDOWN_OPTION(VV_HK_DELETE, "Delete")
+	VV_DROPDOWN_OPTION(VV_HK_MODIFY_TRAITS, "Modify Traits")
+	VV_DROPDOWN_OPTION("", "---")
+
+/client/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(!.)
+		return
+
+	if(href_list[VV_HK_MANIPULATE_COLOR_MATRIX])
+		if(!check_rights(R_DEBUG))
+			return
+
+		message_admins("[key_name_admin(usr)] is manipulating the colour matrix for [src]")
+		var/datum/ui_module/colour_matrix_tester/CMT = new(target=src)
+		CMT.ui_interact(usr)
 
 /client/proc/debug_variables(datum/D in world)
 	set name = "\[Admin\] View Variables"
@@ -147,34 +194,7 @@
 	if(sprite)
 		sprite_text = "<img src='vv[hash].png'></td><td>"
 
-
-	var/list/atomsnowflake = list()
-	if(isatom(D))
-		var/atom/A = D
-		if(isliving(A))
-			var/mob/living/L = A
-			atomsnowflake += "<a href='byond://?_src_=vars;rename=[L.UID()]'><b>[L]</b></a>"
-			if(L.dir)
-				atomsnowflake += "<br><font size='1'><a href='byond://?_src_=vars;rotatedatum=[L.UID()];rotatedir=left'><<</a> <a href='byond://?_src_=vars;datumedit=[L.UID()];varnameedit=dir'>[dir2text(L.dir)]</a> <a href='byond://?_src_=vars;rotatedatum=[L.UID()];rotatedir=right'>>></a></font>"
-			atomsnowflake += {"
-				<br><font size='1'><a href='byond://?_src_=vars;datumedit=[L.UID()];varnameedit=ckey'>[L.ckey ? L.ckey : "No ckey"]</a> / <a href='byond://?_src_=vars;datumedit=[L.UID()];varnameedit=real_name'>[L.real_name ? L.real_name : "No real name"]</a></font>
-				<br><font size='1'>
-					BRUTE:<font size='1'><a href='byond://?_src_=vars;mobToDamage=[L.UID()];adjustDamage=brute'>[L.getBruteLoss()]</a>
-					FIRE:<font size='1'><a href='byond://?_src_=vars;mobToDamage=[L.UID()];adjustDamage=fire'>[L.getFireLoss()]</a>
-					TOXIN:<font size='1'><a href='byond://?_src_=vars;mobToDamage=[L.UID()];adjustDamage=toxin'>[L.getToxLoss()]</a>
-					OXY:<font size='1'><a href='byond://?_src_=vars;mobToDamage=[L.UID()];adjustDamage=oxygen'>[L.getOxyLoss()]</a>
-					CLONE:<font size='1'><a href='byond://?_src_=vars;mobToDamage=[L.UID()];adjustDamage=clone'>[L.getCloneLoss()]</a>
-					BRAIN:<font size='1'><a href='byond://?_src_=vars;mobToDamage=[L.UID()];adjustDamage=brain'>[L.getBrainLoss()]</a>
-					STAMINA:<font size='1'><a href='byond://?_src_=vars;mobToDamage=[L.UID()];adjustDamage=stamina'>[L.getStaminaLoss()]</a>
-				</font>
-			"}
-		else
-			atomsnowflake += "<a href='byond://?_src_=vars;datumedit=[A.UID()];varnameedit=name'><b>[A]</b></a>"
-			if(A.dir)
-				atomsnowflake += "<br><font size='1'><a href='byond://?_src_=vars;rotatedatum=[A.UID()];rotatedir=left'><<</a> <a href='byond://?_src_=vars;datumedit=[A.UID()];varnameedit=dir'>[dir2text(A.dir)]</a> <a href='byond://?_src_=vars;rotatedatum=[D.UID()];rotatedir=right'>>></a></font>"
-	else
-		atomsnowflake += "<b>[D]</b>"
-
+	var/list/header = islist ? list("<b>/list</b>") : D.vv_get_header()
 
 	var/formatted_type = "[type]"
 	if(length(formatted_type) > 25)
@@ -202,28 +222,18 @@
 		varedited_line += "<br><font size='1' color='red'><b>Var Edited</b></font>"
 
 
-	var/dropdownoptions = list()
+	var/list/dropdownoptions = list()
 	if(islist)
 		dropdownoptions = list(
-			"---",
-			"Add Item" = "byond://?_src_=vars;listadd=[refid]",
-			"Remove Nulls" = "byond://?_src_=vars;listnulls=[refid]",
-			"Remove Dupes" = "byond://?_src_=vars;listdupes=[refid]",
-			"Set len" = "byond://?_src_=vars;listlen=[refid]",
-			"Shuffle" = "byond://?_src_=vars;listshuffle=[refid]"
+			"<option>---</option>",
+			"<option value='byond://?_src_=vars;listadd=[refid]'>Add Item</option>",
+			"<option value='byond://?_src_=vars;listnulls=[refid]'>Remove Nulls</option>",
+			"<option value='byond://?_src_=vars;listdupes=[refid]'>Remove Dupes</option>",
+			"<option value='byond://?_src_=vars;listlen=[refid]'>Set len</option>",
+			"<option value='byond://?_src_=vars;listshuffle=[refid]'>Shuffle</option>"
 		)
 	else
 		dropdownoptions = D.vv_get_dropdown()
-
-
-	var/list/dropdownoptions_html = list()
-	for(var/name in dropdownoptions)
-		var/link = dropdownoptions[name]
-		if(link)
-			dropdownoptions_html += "<option value='[link]'>[name]</option>"
-		else
-			dropdownoptions_html += "<option value>[name]</option>"
-
 
 	var/list/names = list()
 	if(!islist)
@@ -391,7 +401,7 @@
 								<td>
 									[sprite_text]
 									<div align='center'>
-										[atomsnowflake.Join()]
+										[header.Join()]
 									</div>
 								</td>
 							</tr>
@@ -412,7 +422,7 @@
 									onmouseclick="this.focus()"
 									style="background-color:#ffffff">
 									<option value selected>Select option</option>
-									[dropdownoptions_html.Join()]
+									[dropdownoptions.Join()]
 								</select>
 							</form>
 						</div>
@@ -593,10 +603,13 @@
 	if(href_list["Vars"])
 		debug_variables(locateUID(href_list["Vars"]))
 
-	//~CARN: for renaming mobs (updates their name, real_name, mind.name, their ID/PDA and datacore records).
-	else if(href_list["rename"])
-		if(!check_rights(R_ADMIN))	return
+	var/target = GET_VV_TARGET
+	vv_core_topics(target, href_list, href)
+	if(isdatum(target))
+		var/datum/D = target
+		D.vv_do_topic(href_list)
 
+<<<<<<< HEAD
 		var/mob/M = locateUID(href_list["rename"])
 		if(!istype(M))
 			to_chat(usr, "This can only be used on instances of type /mob")
@@ -1268,81 +1281,14 @@
 			return
 		holder.modify_traits(A)
 
+=======
+	// Refresh the VV if something asked us to
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	if(href_list["datumrefresh"])
 		var/datum/DAT = locateUID(href_list["datumrefresh"])
 		if(!istype(DAT, /datum) && !isclient(DAT))
 			return
 		src.debug_variables(DAT)
-
-	if(href_list["manipcolours"])
-		if(!check_rights(R_DEBUG))
-			return
-
-		var/datum/target = locateUID(href_list["manipcolours"])
-		if(!(isatom(target) || isclient(target)))
-			to_chat(usr, "This can only be used on atoms and clients")
-			return
-
-		message_admins("[key_name_admin(usr)] is manipulating the colour matrix for [target]")
-		var/datum/ui_module/colour_matrix_tester/CMT = new(target=target)
-		CMT.ui_interact(usr)
-
-	if(href_list["grantdeadchatcontrol"])
-		if(!check_rights(R_EVENT))
-			return
-
-		var/atom/movable/A = locateUID(href_list["grantdeadchatcontrol"])
-		if(!istype(A))
-			return
-
-		if(!GLOB.dsay_enabled)
-			// TODO verify what happens when deadchat is muted
-			to_chat(usr, "<span class='warning'>Deadchat is globally muted, un-mute deadchat before enabling this.</span>")
-			return
-
-		if(A.GetComponent(/datum/component/deadchat_control))
-			to_chat(usr, "<span class='warning'>[A] is already under deadchat control!</span>")
-			return
-
-		var/control_mode = input(usr, "Please select the control mode","Deadchat Control", null) as null|anything in list("democracy", "anarchy")
-
-		var/selected_mode
-		switch(control_mode)
-			if("democracy")
-				selected_mode = DEADCHAT_DEMOCRACY_MODE
-			if("anarchy")
-				selected_mode = DEADCHAT_ANARCHY_MODE
-			else
-				return
-
-		var/cooldown = input(usr, "Please enter a cooldown time in seconds. For democracy, it's the time between actions (must be greater than zero). For anarchy, it's the time between each user's actions, or -1 for no cooldown.", "Cooldown", null) as null|num
-		if(isnull(cooldown) || (cooldown == -1 && selected_mode == DEADCHAT_DEMOCRACY_MODE))
-			return
-		if(cooldown < 0 && selected_mode == DEADCHAT_DEMOCRACY_MODE)
-			to_chat(usr, "<span class='warning'>The cooldown for democracy mode must be greater than zero.</span>")
-			return
-		if(cooldown == -1)
-			cooldown = 0
-		else
-			cooldown = cooldown SECONDS
-
-		A.deadchat_plays(selected_mode, cooldown)
-		message_admins("[key_name_admin(usr)] provided deadchat control to [A].")
-
-	if(href_list["removedeadchatcontrol"])
-		if(!check_rights(R_EVENT))
-			return
-
-		var/atom/movable/A = locateUID(href_list["removedeadchatcontrol"])
-		if(!istype(A))
-			return
-
-		if(!A.GetComponent(/datum/component/deadchat_control))
-			to_chat(usr, "<span class='warning'>[A] is not currently under deadchat control!</span>")
-			return
-
-		A.stop_deadchat_plays()
-		message_admins("[key_name_admin(usr)] removed deadchat control from [A].")
 
 /client/proc/view_var_Topic_list(href, href_list, hsrc)
 	if(href_list["VarsList"])

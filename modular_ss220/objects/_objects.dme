@@ -45,6 +45,12 @@
 #include "code/papershredder.dm"
 #include "code/plastic_chair.dm"
 #include "code/platform.dm"
+<<<<<<< HEAD
+=======
+#include "code/plushies/crewman.dm"
+#include "code/plushies/hampters.dm"
+#include "code/plushies/macvulpix.dm"
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 #include "code/portable_turret.dm"
 #include "code/posters.dm"
 #include "code/shuttle.dm"

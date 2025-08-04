@@ -346,18 +346,82 @@
 				update_icon()
 			return ITEM_INTERACT_COMPLETE
 		if(has_electronics())
+<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>You cannot repair this APC until you remove the electronics still inside!</span>")
 			return ITEM_INTERACT_COMPLETE
 		user.visible_message("[user.name] replaces the damaged APC frame with a new one.",\
 							"<span class='notice'>You begin to replace the damaged APC frame...</span>")
 		if(do_after(user, 50, target = src))
 			to_chat(user, "<span class='notice'>You replace the damaged APC frame with a new one.</span>")
+=======
+			if(user.mind && HAS_TRAIT(user.mind, TRAIT_ELECTRICAL_SPECIALIST))
+				if(stat & BROKEN)
+					to_chat(user, "<span class='warning'>[src] is damaged! You must repair the frame before you can install [used]!</span>")
+					return ITEM_INTERACT_COMPLETE
+				if(malfhack)
+					malfai = null
+					malfhack = FALSE
+					user.visible_message(\
+						"<span class='notice'>[name] has discarded the strangely programmed APC electronics from [src]!</span>",
+						"<span class='notice'>You discarded the strangely programmed board.</span>",
+						"<span class='warning'>You hear metallic levering.</span>"
+						)
+				else
+					user.visible_message(
+							"<span class='notice'>[user] exchanges out broken the APC electronics inside [src]!</span>",
+							"<span class='notice'>You carefully remove the charred electronics, replacing it with a functional board.</span>",
+							"<span class='warning'>You hear metallic levering and a crack, followed by a gentle click.</span>")
+				playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
+				qdel(used)
+				electronics_state = APC_ELECTRONICS_INSTALLED
+				locked = FALSE
+				stat &= ~MAINT
+				update_icon()
+				return ITEM_INTERACT_COMPLETE
+			else
+				to_chat(user, "<span class='warning'>[src] already contains APC electronics!</span>")
+				return ITEM_INTERACT_COMPLETE
+
+		if(stat & BROKEN)
+			to_chat(user, "<span class='warning'>[src] is damaged! You must repair the frame before you can install [used]!</span>")
+			return ITEM_INTERACT_COMPLETE
+
+		if(!has_electronics())
+			user.visible_message(
+				"<span class='notice'>[user] installs [used] into [src].</span>",
+				"<span class='notice'>You install [used] into [src].</span>"
+			)
+			playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
+			electronics_state = APC_ELECTRONICS_INSTALLED
+			locked = FALSE
+			stat &= ~MAINT
+			update_icon()
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 			qdel(used)
 			stat &= ~BROKEN
 			obj_integrity = max_integrity
 			if(opened == APC_COVER_OFF)
 				opened = APC_OPENED
 			update_icon()
+<<<<<<< HEAD
+=======
+			return ITEM_INTERACT_COMPLETE
+
+		if(has_electronics() && user.mind && !HAS_TRAIT(user.mind, TRAIT_ELECTRICAL_SPECIALIST))
+			to_chat(user, "<span class='warning'>You cannot repair [src] until you remove the electronics!</span>")
+			return ITEM_INTERACT_COMPLETE
+
+		user.visible_message(
+			"<span class='notice'>[user] replaces the damaged frame of [src].</span>",
+			"<span class='notice'>You replace the damaged frame of [src].</span>"
+		)
+		qdel(used)
+		stat &= ~BROKEN
+		obj_integrity = max_integrity
+		if(opened == APC_COVER_OFF)
+			opened = APC_OPENED
+		update_icon()
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 		return ITEM_INTERACT_COMPLETE
 	else
 		return ..()

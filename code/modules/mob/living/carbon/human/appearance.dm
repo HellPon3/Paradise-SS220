@@ -318,17 +318,23 @@
 	return TRUE
 
 
-/mob/living/carbon/human/proc/change_skin_color(colour = "#000000")
-	if(colour == skin_colour || !(dna.species.bodyflags & HAS_SKIN_COLOR))
+/mob/living/carbon/human/proc/change_skin_color(color = "#000000")
+	if(!is_color_text(color) || color == skin_colour || !(dna.species.bodyflags & HAS_SKIN_COLOR))
 		return
 
-	skin_colour = colour
+	skin_colour = color
 
 	force_update_limbs()
 	return TRUE
 
+<<<<<<< HEAD
 /mob/living/carbon/human/proc/change_skin_tone(tone)
 	if(s_tone == tone || !((dna.species.bodyflags & HAS_SKIN_TONE) || (dna.species.bodyflags & HAS_ICON_SKIN_TONE)))
+=======
+/// Tone must be between -185 and 220. commonly used in 1 to 220, see `random_skin_tone()` for species-specific values
+/mob/living/carbon/human/proc/change_skin_tone(tone, override = FALSE)
+	if(!isnum(tone) || !((dna.species.bodyflags & HAS_SKIN_TONE) || (dna.species.bodyflags & HAS_ICON_SKIN_TONE)))
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 		return
 
 	s_tone = tone

@@ -414,7 +414,7 @@
 /area/ruin/ancientstation/betanorth)
 "bp" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/space/nasavoid/old,
+/obj/item/clothing/suit/space/void/old,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	dir = 5;
@@ -1405,7 +1405,7 @@
 /obj/structure/rack,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/shoes/magboots,
-/obj/item/clothing/head/helmet/space/nasavoid/old,
+/obj/item/clothing/head/helmet/space/void/old,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "yellow"
@@ -4521,7 +4521,11 @@
 /turf/template_noop,
 /area/space/nearstation)
 "rU" = (
+<<<<<<< HEAD
 /obj/machinery/door/poddoor/multi_tile/impassable/two_tile_hor{
+=======
+/obj/machinery/door/poddoor/multi_tile/impassable{
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	name = "prototype vault blast doors";
 	desc = "A heavy duty blast door that opens mechanically. It was hermetically sealed when the crew went into cryostasis.";
 	id_tag = "prototype_vault"

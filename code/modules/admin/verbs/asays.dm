@@ -44,6 +44,19 @@ GLOBAL_LIST_EMPTY(devsays)
 
 	display_says(GLOB.asays, "asay")
 
+<<<<<<< HEAD
+=======
+/client/proc/view_staffsays()
+	set name = "Staffsays"
+	set desc = "View Staffsays from the current round."
+	set category = "Admin"
+
+	if(!check_rights(R_DEV_TEAM | R_ADMIN))
+		return
+
+	display_says(GLOB.staffsays, "staffsay")
+
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 /client/proc/display_says(list/say_list, title)
 
 	var/list/output = list({"

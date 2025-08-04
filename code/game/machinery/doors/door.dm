@@ -88,6 +88,17 @@
 		return
 	update_icon()
 
+<<<<<<< HEAD
+=======
+/// We don't wanna end up getting ex_act() multiple times because we are located at multiple tiles
+/obj/machinery/door/ex_act()
+	if(width > 1)
+		if(!COOLDOWN_FINISHED(src, explosion_cooldown))
+			return
+		COOLDOWN_START(src, explosion_cooldown, 1 SECONDS)
+	return ..()
+
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 /obj/machinery/door/Destroy()
 	density = FALSE
 	recalculate_atmos_connectivity()
@@ -430,10 +441,26 @@
 		crush()
 	return TRUE
 
+<<<<<<< HEAD
 /obj/machinery/door/proc/CheckForMobs()
 	if(locate(/mob/living) in get_turf(src))
 		sleep(1)
 		open()
+=======
+/obj/machinery/door/proc/get_airlock_turfs()
+	var/list/airlock_turfs = list(get_turf(src))
+	if(width > 1)
+		for(var/i in 1 to width - 1)
+			airlock_turfs |= get_step(airlock_turfs[i], turn(dir, 90))
+	return airlock_turfs
+
+/obj/machinery/door/proc/check_for_mobs()
+	for(var/turf/T in get_airlock_turfs())
+		if(locate(/mob/living) in T)
+			sleep(1)
+			open()
+			break
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 
 /obj/machinery/door/proc/crush()
 	for(var/mob/living/L in get_turf(src))
@@ -547,12 +574,35 @@
 
 	QDEL_LIST_CONTENTS(fillers)
 
-	if(dir in list(EAST, WEST))
+	if(dir in list(SOUTH, NORTH))
 		bound_width = width * world.icon_size
 		bound_height = world.icon_size
+<<<<<<< HEAD
 	else
 		bound_width = world.icon_size
 		bound_height = width * world.icon_size
+=======
+		bound_y = 0
+		pixel_y = 0
+		if(dir == NORTH)
+			bound_x = -(width - 1) * world.icon_size
+			pixel_x = -(width - 1) * world.icon_size
+		else
+			bound_x = 0
+			pixel_x = 0
+
+	else
+		bound_width = world.icon_size
+		bound_height = width * world.icon_size
+		bound_x = 0
+		pixel_x = 0
+		if(dir == WEST)
+			bound_y = -(width - 1) * world.icon_size
+			pixel_y = -(width - 1) * world.icon_size
+		else
+			bound_y = 0
+			pixel_y = 0
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 
 	LAZYINITLIST(fillers)
 
@@ -561,6 +611,7 @@
 	for(var/i = 1, i < width, i++)
 		var/obj/airlock_filler_object/filler
 
+<<<<<<< HEAD
 		if(length(fillers) < i)
 			filler = new
 			filler.pair_airlock(src)
@@ -569,9 +620,15 @@
 			filler = fillers[i]
 
 		filler.loc = get_step(last_filler, adjusted_dir)
+=======
+		filler = new(src)
+		filler.pair_airlock(src)
+		filler.loc = get_step(last_filler, turn(dir, 90))
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 		filler.density = density
 		filler.set_opacity(opacity)
 
+		fillers += filler
 		last_filler = filler
 
 /obj/machinery/door/proc/set_fillers_density(density)

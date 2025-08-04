@@ -323,11 +323,17 @@
 
 /obj/item/borg/upgrade/modkit/proc/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
 	. = TRUE
+<<<<<<< HEAD
+=======
+	if(istype(loc, /obj/item/gun/energy/kinetic_accelerator)) //Could be in another KA too.
+		message_admins("[key_name_admin(user)] attempted to install a modkit into a kinetic accelerator while it is installed in an accelerator. Could be a double click, or an exploit attempt.")
+		return FALSE
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	if(minebot_upgrade)
-		if(minebot_exclusive && !istype(KA.loc, /mob/living/simple_animal/hostile/mining_drone))
+		if(minebot_exclusive && !istype(KA.loc, /mob/living/basic/mining_drone))
 			to_chat(user, "<span class='notice'>The modkit you're trying to install is only rated for minebot use.</span>")
 			return FALSE
-	else if(istype(KA.loc, /mob/living/simple_animal/hostile/mining_drone))
+	else if(istype(KA.loc, /mob/living/basic/mining_drone))
 		to_chat(user, "<span class='notice'>The modkit you're trying to install is not rated for minebot use.</span>")
 		return FALSE
 	if(denied_type)

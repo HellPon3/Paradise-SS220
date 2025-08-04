@@ -97,7 +97,11 @@
 				"<span class='userdanger'>\The [source] arc flashes and electrocutes you!</span>",
 				"<span class='italics'>You hear a lightning-like crack!</span>")
 			playsound(loc, 'sound/effects/eleczap.ogg', 50, TRUE, -1)
+<<<<<<< HEAD
 			explosion(loc, -1, 0, 2, 2)
+=======
+			explosion(loc, -1, 1, 3, 3, cause = "Extreme Electrocution from [source]")
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	else
 		apply_damage(shock_damage, STAMINA)
 	visible_message(

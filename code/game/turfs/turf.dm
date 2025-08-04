@@ -761,7 +761,11 @@
 	overlay.blend_mode = BLEND_OVERLAY
 	overlay.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 
+<<<<<<< HEAD
 /obj/effect/pressure_overlay/onShuttleMove(turf/oldT, turf/T1, rotation, mob/caller)
+=======
+/obj/effect/abstract/pressure_overlay/onShuttleMove(turf/oldT, turf/T1, rotation, mob/calling_mob)
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	// No, I don't think I will.
 	return FALSE
 

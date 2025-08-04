@@ -50,3 +50,15 @@
 	// cost = 25 // на базе в сейфе есть ЕКА
 	allow_duplicates = FALSE
 	always_place = FALSE
+<<<<<<< HEAD
+=======
+
+/datum/map_template/ruin/lavaland/nt
+	prefix = "_maps/map_files220/RandomRuins/LavaRuins/"
+
+/datum/map_template/ruin/lavaland/hierophant
+	always_place = FALSE
+
+/datum/map_template/ruin/lavaland/tumor
+	always_place = FALSE
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555

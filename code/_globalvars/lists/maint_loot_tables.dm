@@ -129,6 +129,11 @@ GLOBAL_LIST_INIT(maintenance_loot_tier_2, list(
 		/obj/item/clothing/head/welding,
 		/obj/item/crowbar/red,
 		/obj/item/storage/belt/utility,
+<<<<<<< HEAD
+=======
+		/obj/item/dissector,
+		/obj/effect/spawner/random/smithed_item/any,
+>>>>>>> e3b04880c842ca6b85a169dd5affd7f668c3a555
 	) = 45,
 
 	list(
